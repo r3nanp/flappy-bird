@@ -66,6 +66,13 @@ const flappyBird = {
   height: 24,
   canvasX: 10,
   canvasY: 50,
+  gravity: 0.75,
+  speed: 0,
+  update() {
+    flappyBird.speed = flappyBird.speed + flappyBird.gravity;
+
+    flappyBird.canvasY += flappyBird.speed;
+  },
   draw() {
     context.drawImage(
       sprites,
@@ -78,11 +85,10 @@ const flappyBird = {
 }
 
 function reloadDraw() {
+  flappyBird.update();
   background.draw();
-  flappyBird.draw();
   floor.draw();
-
-  flappyBird.y += 1;
+  flappyBird.draw();
 
   requestAnimationFrame(reloadDraw);
 }
