@@ -121,7 +121,7 @@ function makeFlappyBird() {
 
         setTimeout(() => {
           changeDisplay(display.main)
-        }, 500)
+        }, 300)
         return;
       }
 
