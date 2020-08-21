@@ -7,12 +7,14 @@
   <title>Flappy Bird Clone</title>
 </head>
 <body>
+  <p>Made by Renan</p>
   <canvas id="screen" width="320" height="480"></canvas>
 
   <style>
     body {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
     }
@@ -22,8 +24,12 @@
       display: block;
       margin: 0 auto;
     }
-  </style>
 
+    p {
+      font: 700 1rem sans-serif;
+      margin: 10px;
+    }
+  </style>
   <script src="scripts.js"></script>
 </body>
 </html>

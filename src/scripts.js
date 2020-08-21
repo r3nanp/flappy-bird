@@ -1,4 +1,5 @@
 let frames = 0;
+let points = 0;
 
 const sprites = new Image();
 sprites.src = './images/sprites.png';
@@ -84,7 +85,6 @@ function makeFloor() {
   return floor;
 }
 
-
 function makeCollision(flappyBird, floor) {
   const flappyBirdY = flappyBird.canvasY + flappyBird.height;
 
@@ -111,7 +111,7 @@ function makeFlappyBird() {
       flappyBird.speed = -flappyBird.jumping;
     },
 
-    gravity: 0.75,
+    gravity: 0.25,
     speed: 0,
 
     update() {
@@ -121,7 +121,7 @@ function makeFlappyBird() {
 
         setTimeout(() => {
           changeDisplay(display.main)
-        }, 300)
+        }, 500)
         return;
       }
 
@@ -143,7 +143,7 @@ function makeFlappyBird() {
       const framesInterval = 10;
       const passOnInterval = frames % framesInterval === 0;
 
-      if (passOnInterval) {   
+      if (passOnInterval) {
         const baseIncrease = 1;
         const increase = baseIncrease + flappyBird.actualFrame;
         const baseLoop = flappyBird.movements.length;
@@ -169,6 +169,109 @@ function makeFlappyBird() {
   return flappyBird;
 }
 
+function makePipes() {
+  const pipes = {
+    width: 52,
+    height: 400,
+    floor: {
+      spriteX: 0,
+      spriteY: 169,
+    },
+    sky: {
+      spriteX: 52,
+      spriteY: 169,
+    },
+    distance: 80,
+    draw() {
+      pipes.pipesList.forEach(list => {
+        const pipeRandomY = list.y;
+        const spacePipes = 90;
+  
+        const pipeSkyX = list.x;
+        const pipeSkyY = pipeRandomY;
+  
+        // Upper pipe
+        context.drawImage(
+          sprites,
+          pipes.sky.spriteX, pipes.sky.spriteY,
+          pipes.width, pipes.height,
+          pipeSkyX, pipeSkyY,
+          pipes.width, pipes.height,
+        );
+
+        // Floor pipe
+        const pipeFloorX = list.x;
+        const pipeFloorY = pipes.height + spacePipes + pipeRandomY;
+
+        context.drawImage(
+          sprites,
+          pipes.floor.spriteX, pipes.floor.spriteY,
+          pipes.width, pipes.height,
+          pipeFloorX, pipeFloorY,
+          pipes.width, pipes.height,
+        );
+
+        list.pipeSky = {
+          x: pipeSkyX,
+          y: pipes.height + pipeSkyY
+        },
+
+        list.pipeFloor = {
+          x: pipeFloorX,
+          y: pipeFloorY,
+        }
+      })
+    },
+
+    flappyBirdCollision(list){
+      const flappyHead = global.flappyBird.canvasY;
+      const flappyFeet = global.flappyBird.canvasY + global.flappyBird.height;
+
+
+      if(global.flappyBird.canvasX >= list.x)  {
+
+        if(flappyHead <= list.pipeSky.y) {
+          return true;
+        }
+
+        if(flappyFeet >= list.pipeFloor.y) {
+          return true;
+        }
+      } 
+
+      return false;
+    },
+
+    pipesList: [],
+    update() {
+      const passedFrames = frames % 100 === 0;
+
+      if(passedFrames) {
+        pipes.pipesList.push({
+          x: screen.width,
+          y: -150 * (Math.random() + 1),
+        })
+      }
+
+      pipes.pipesList.forEach(list => {
+        list.x -= 2;
+
+        if(pipes.flappyBirdCollision(list)) {
+          setTimeout(() => {
+            changeDisplay(display.over);
+            hitAudio.play();
+          }, 0.5)
+        }
+
+        if(list.x + pipes.width<= 0) {
+          pipes.pipesList.shift();
+        }
+      }
+    )}
+  }
+  return pipes;
+}
+
 // Initial menu
 const getReady = {
   spriteX: 134,
@@ -184,6 +287,25 @@ const getReady = {
       getReady.width, getReady.height,
       getReady.canvasX, getReady.canvasY,
       getReady.width, getReady.height,
+    );
+  }
+}
+
+const gameOver = {
+  spriteX: 131,
+  spriteY: 155,
+  width: 227,
+  height: 199,
+  canvasX: (screen.width / 2) - 227 / 2,
+  canvasY: 50,
+
+  draw() {
+    context.drawImage(
+      sprites,
+      gameOver.spriteX, gameOver.spriteY,
+      gameOver.width, gameOver.height,
+      gameOver.canvasX, gameOver.canvasY,
+      gameOver.width, gameOver.height,
     );
   }
 }
@@ -206,13 +328,14 @@ const display = {
     started() {
       global.flappyBird = makeFlappyBird();
       global.floor = makeFloor();
+      global.pipes = makePipes();
     },
 
     draw() {
       background.draw();
-      global.floor.draw();
-
       global.flappyBird.draw();
+
+      global.floor.draw();
       getReady.draw();
     },
 
@@ -228,6 +351,7 @@ const display = {
   game: {
     draw() {
       background.draw();
+      global.pipes.draw();
       global.floor.draw();
 
       global.flappyBird.draw();
@@ -240,8 +364,21 @@ const display = {
     update() {
       global.flappyBird.update();
       global.floor.update();
+      global.pipes.update();
     },
   },
+
+  over: {
+    draw() {
+      background.draw();
+
+      global.floor.draw();
+      gameOver.draw();
+    },
+    click() {
+      changeDisplay(display.game);
+    }
+  }
 };
 
 function reloadDraw() {
@@ -249,6 +386,7 @@ function reloadDraw() {
   displayActive.update();
 
   frames += 1;
+  // points += 1;
 
   requestAnimationFrame(reloadDraw);
 }
@@ -259,7 +397,6 @@ window.addEventListener('click', () => {
   }
 
 })
-
 changeDisplay(display.main);
 
 reloadDraw();
