@@ -119,7 +119,7 @@ function makeFlappyBird() {
         setTimeout(() => {
           changeDisplay(display.over)
           hitAudio.play()
-        }, 500)
+        }, 0.5)
         return;
       }
 
