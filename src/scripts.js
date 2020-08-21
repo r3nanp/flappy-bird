@@ -37,31 +37,43 @@ const background = {
   }
 }
 
-const floor = {
-  spriteX: 0,
-  spriteY: 610,
-  width: 224,
-  height: 112,
-  canvasX: 0,
-  canvasY: screen.height - 112,
-  draw() {
-    context.drawImage(
-      sprites,
-      floor.spriteX, floor.spriteY,
-      floor.width, floor.height,
-      floor.canvasX, floor.canvasY,
-      floor.width, floor.height,
-    );
+function makeFloor() {
+  const floor = {
+    spriteX: 0,
+    spriteY: 610,
+    width: 224,
+    height: 112,
+    canvasX: 0,
+    canvasY: screen.height - 112,
+    update() {
+      const moveFloor = 1;
+      const repeat = floor.width / 2;
 
-    context.drawImage(
-      sprites,
-      floor.spriteX, floor.spriteY,
-      floor.width, floor.height,
-      (floor.canvasX + floor.width), floor.canvasY,
-      floor.width, floor.height,
-    );
-  },
+      floor.canvasX -= moveFloor;
+    },
+
+    draw() {
+      context.drawImage(
+        sprites,
+        floor.spriteX, floor.spriteY,
+        floor.width, floor.height,
+        floor.canvasX, floor.canvasY,
+        floor.width, floor.height,
+      );
+  
+      context.drawImage(
+        sprites,
+        floor.spriteX, floor.spriteY,
+        floor.width, floor.height,
+        (floor.canvasX + floor.width), floor.canvasY,
+        floor.width, floor.height,
+      );
+    },
+  }
+
+  return floor;
 }
+
 
 function makeCollision(flappyBird, floor) {
   const flappyBirdY = flappyBird.canvasY + flappyBird.height;
@@ -93,7 +105,7 @@ function makeFlappyBird() {
     speed: 0,
 
     update() {
-      if (makeCollision(flappyBird, floor)) {
+      if (makeCollision(flappyBird, global.floor)) {
         console.log('Collision')
         hitAudio.play();
 
@@ -158,11 +170,12 @@ const display = {
   main: {
     started() {
       global.flappyBird = makeFlappyBird();
+      global.floor = makeFloor();
     },
 
     draw() {
       background.draw();
-      floor.draw();
+      global.floor.draw();
 
       global.flappyBird.draw();
       getReady.draw();
@@ -173,14 +186,14 @@ const display = {
     },
 
     update() {
-
+      global.floor.update();
     },
   },
 
   game: {
     draw() {
       background.draw();
-      floor.draw();
+      global.floor.draw();
 
       global.flappyBird.draw();
     },
