@@ -4,6 +4,7 @@ sprites.src = './images/sprites.png';
 const screen = document.getElementById('screen');
 const context = screen.getContext('2d');
 
+// Game styles
 const background = {
   spriteX: 390,
   spriteY: 0,
@@ -76,21 +77,86 @@ const flappyBird = {
   draw() {
     context.drawImage(
       sprites,
-      flappyBird.spriteX, flappyBird.spriteY, // Coordenada x e y
-      flappyBird.width, flappyBird.height,    // Corte no sprite
+      flappyBird.spriteX, flappyBird.spriteY,
+      flappyBird.width, flappyBird.height,
       flappyBird.canvasX, flappyBird.canvasY,
       flappyBird.width, flappyBird.height,
     );
   },
 }
 
+// Initial menu
+const getReady = {
+  spriteX: 134,
+  spriteY: 0,
+  width: 174,
+  height: 152,
+  canvasX: (screen.width / 2) - 174 / 2,
+  canvasY: 50,
+  draw() {
+    context.drawImage(
+      sprites,
+      getReady.spriteX, getReady.spriteY,
+      getReady.width, getReady.height,
+      getReady.canvasX, getReady.canvasY,
+      getReady.width, getReady.height,
+    );
+  }
+}
+
+// Screens
+let displayActive = {};
+
+function changeDisplay(newDisplay) {
+  displayActive = newDisplay;
+}
+
+const display = {
+  main: {
+    draw() {
+      background.draw();
+      floor.draw();
+      flappyBird.draw();
+
+      getReady.draw();
+    },
+
+    click() {
+      changeDisplay(display.game);
+    },
+
+    update() {
+
+    },
+  },
+
+  game: {
+    draw() {
+      background.draw();
+      floor.draw();
+      flappyBird.draw();
+    },
+  
+    update() {
+      flappyBird.update();
+    },
+  },
+};
+
 function reloadDraw() {
-  flappyBird.update();
-  background.draw();
-  floor.draw();
-  flappyBird.draw();
+  displayActive.draw();
+  displayActive.update();
 
   requestAnimationFrame(reloadDraw);
 }
+
+window.addEventListener('click', () => {
+  if (displayActive.click) {
+    displayActive.click()
+  }
+
+})
+
+changeDisplay(display.main);
 
 reloadDraw();
