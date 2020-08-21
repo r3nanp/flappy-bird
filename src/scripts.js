@@ -116,11 +116,9 @@ function makeFlappyBird() {
 
     update() {
       if (makeCollision(flappyBird, global.floor)) {
-        console.log('Collision')
-        hitAudio.play();
-
         setTimeout(() => {
-          changeDisplay(display.main)
+          changeDisplay(display.over)
+          hitAudio.play()
         }, 500)
         return;
       }
@@ -307,6 +305,9 @@ const gameOver = {
       gameOver.canvasX, gameOver.canvasY,
       gameOver.width, gameOver.height,
     );
+  },
+  update() {
+    this.draw();
   }
 }
 
@@ -320,6 +321,9 @@ function changeDisplay(newDisplay) {
 
   if (displayActive.started) {
     displayActive.started();
+  }
+  if(displayActive.over) {
+    displayActive.over();
   }
 }
 
@@ -376,7 +380,10 @@ const display = {
       gameOver.draw();
     },
     click() {
-      changeDisplay(display.game);
+      changeDisplay(display.main);
+    },
+    update() {
+      gameOver.draw();
     }
   }
 };
@@ -386,13 +393,13 @@ function reloadDraw() {
   displayActive.update();
 
   frames += 1;
-  // points += 1;
+  points += 1;
 
   requestAnimationFrame(reloadDraw);
 }
 
 window.addEventListener('click', () => {
-  if (displayActive.click) {
+  if (displayActive.click || displayActive.over) {
     displayActive.click()
   }
 
