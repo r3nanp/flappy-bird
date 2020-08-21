@@ -1,3 +1,5 @@
+let frames = 0;
+
 const sprites = new Image();
 sprites.src = './images/sprites.png';
 
@@ -16,13 +18,20 @@ const background = {
   canvasX: 0,
   canvasY: screen.height - 204,
   draw() {
+    /* Background movimentado */
+    const moveBackground = 1;
+    const repeat = background.width / 2;
+    const moving = background.canvasX - moveBackground
+
+    background.canvasX = moving % repeat;
+
     context.fillStyle = '#70c5ce';
     context.fillRect(0,0, screen.width, screen.height)
 
     context.drawImage(
       sprites,
-      background.spriteX, background.spriteY, // Coordenada x e y
-      background.width, background.height,    // Corte no sprite
+      background.spriteX, background.spriteY, // x and y
+      background.width, background.height,    // cut on sprite
       background.canvasX, background.canvasY,
       background.width, background.height,
     );
@@ -48,8 +57,9 @@ function makeFloor() {
     update() {
       const moveFloor = 1;
       const repeat = floor.width / 2;
+      const moving = floor.canvasX - moveFloor
 
-      floor.canvasX -= moveFloor;
+      floor.canvasX = moving % repeat;
     },
 
     draw() {
@@ -111,7 +121,7 @@ function makeFlappyBird() {
 
         setTimeout(() => {
           changeDisplay(display.main)
-        }, 1000)
+        }, 500)
         return;
       }
 
@@ -120,10 +130,35 @@ function makeFlappyBird() {
       flappyBird.canvasY += flappyBird.speed;
     },
 
+    movements: [
+      { spriteX: 0, spriteY: 0, },
+      { spriteX: 0, spriteY: 26, },
+      { spriteX: 0, spriteY: 52, },
+      { spriteX: 0, spriteY: 26, },
+    ],
+
+    actualFrame: 0,
+
+    updateFrames() {
+      const framesInterval = 10;
+      const passOnInterval = frames % framesInterval === 0;
+
+      if (passOnInterval) {   
+        const baseIncrease = 1;
+        const increase = baseIncrease + flappyBird.actualFrame;
+        const baseLoop = flappyBird.movements.length;
+        
+        flappyBird.actualFrame = increase % baseLoop;
+      }
+    },
+
     draw() {
+      flappyBird.updateFrames()
+      const { spriteX, spriteY } = flappyBird.movements[flappyBird.actualFrame];
+
       context.drawImage(
         sprites,
-        flappyBird.spriteX, flappyBird.spriteY,
+        spriteX, spriteY,
         flappyBird.width, flappyBird.height,
         flappyBird.canvasX, flappyBird.canvasY,
         flappyBird.width, flappyBird.height,
@@ -204,6 +239,7 @@ const display = {
   
     update() {
       global.flappyBird.update();
+      global.floor.update();
     },
   },
 };
@@ -211,6 +247,8 @@ const display = {
 function reloadDraw() {
   displayActive.draw();
   displayActive.update();
+
+  frames += 1;
 
   requestAnimationFrame(reloadDraw);
 }
