@@ -2,10 +2,10 @@ let frames = 0;
 let points = 0;
 
 const sprites = new Image();
-sprites.src = './images/sprites.png';
+sprites.src = './src/images/sprites.png';
 
 const hitAudio = new Audio();
-hitAudio.src = './effects/hitsound.mp3';
+hitAudio.src = './src/effects/hitsound.mp3';
 
 const screen = document.getElementById('screen');
 const context = screen.getContext('2d');
