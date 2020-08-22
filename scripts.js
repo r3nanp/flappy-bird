@@ -23,11 +23,10 @@ const background = {
     const moveBackground = 1;
     const repeat = background.width / 2;
     const moving = background.canvasX - moveBackground
-
     background.canvasX = moving % repeat;
 
     context.fillStyle = '#70c5ce';
-    context.fillRect(0,0, screen.width, screen.height)
+    context.fillRect(0, 0, screen.width, screen.height);
 
     context.drawImage(
       sprites,
@@ -119,13 +118,13 @@ function makeFlappyBird() {
         setTimeout(() => {
           changeDisplay(display.over)
           hitAudio.play()
-        }, 0.5)
+        }, 1)
         return;
       }
 
       flappyBird.speed = flappyBird.speed + flappyBird.gravity;
 
-      flappyBird.canvasY += flappyBird.speed;
+      flappyBird.canvasY = flappyBird.canvasY + flappyBird.speed;
     },
 
     movements: [
@@ -252,18 +251,19 @@ function makePipes() {
       }
 
       pipes.pipesList.forEach(list => {
-        list.x -= 2;
+        list.x =  list.x - 2;
 
         if(pipes.flappyBirdCollision(list)) {
           setTimeout(() => {
             changeDisplay(display.over);
             hitAudio.play();
-          }, 0.5)
+          }, 1)
         }
 
         if(list.x + pipes.width<= 0) {
           pipes.pipesList.shift();
         }
+
       }
     )}
   }
@@ -388,22 +388,23 @@ const display = {
   }
 };
 
-function reloadDraw() {
-  displayActive.draw();
-  displayActive.update();
-
-  frames += 1;
-  points += 1;
-
-  requestAnimationFrame(reloadDraw);
-}
 
 window.addEventListener('click', () => {
   if (displayActive.click || displayActive.over) {
     displayActive.click()
   }
-
 })
+
 changeDisplay(display.main);
 
-reloadDraw();
+renderScreen()
+
+function renderScreen() {
+  displayActive.draw();
+  displayActive.update();
+
+  frames = frames + 1;
+  points = points + 1;
+
+  requestAnimationFrame(renderScreen);
+}
