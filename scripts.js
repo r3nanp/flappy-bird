@@ -1,14 +1,14 @@
-let frames = 0;
-let points = 0;
+let frames = 0
+let points = 0
 
-const sprites = new Image();
-sprites.src = './src/images/sprites.png';
+const sprites = new Image()
+sprites.src = './src/images/sprites.png'
 
-const hitAudio = new Audio();
-hitAudio.src = './src/effects/hitsound.mp3';
+const hitAudio = new Audio()
+hitAudio.src = './src/effects/hitsound.mp3'
 
-const screen = document.getElementById('screen');
-const context = screen.getContext('2d');
+const screen = document.getElementById('screen')
+const context = screen.getContext('2d')
 
 // Game styles
 const background = {
@@ -18,15 +18,16 @@ const background = {
   height: 204,
   canvasX: 0,
   canvasY: screen.height - 204,
+
   draw() {
     /* Background movimentado */
-    const moveBackground = 1;
-    const repeat = background.width / 2;
+    const moveBackground = 1
+    const repeat = background.width / 2
     const moving = background.canvasX - moveBackground
-    background.canvasX = moving % repeat;
+    background.canvasX = moving % repeat
 
-    context.fillStyle = '#70c5ce';
-    context.fillRect(0, 0, screen.width, screen.height);
+    context.fillStyle = '#70c5ce'
+    context.fillRect(0, 0, screen.width, screen.height)
 
     context.drawImage(
       sprites,
@@ -34,7 +35,7 @@ const background = {
       background.width, background.height,    // cut on sprite
       background.canvasX, background.canvasY,
       background.width, background.height,
-    );
+      )
 
     context.drawImage(
       sprites,
@@ -42,7 +43,7 @@ const background = {
       background.width, background.height,
       (background.canvasX + background.width), background.canvasY,
       background.width, background.height,
-    );
+    )
   }
 }
 
@@ -55,11 +56,11 @@ function makeFloor() {
     canvasX: 0,
     canvasY: screen.height - 112,
     update() {
-      const moveFloor = 1;
-      const repeat = floor.width / 2;
+      const moveFloor = 1
+      const repeat = floor.width / 2
       const moving = floor.canvasX - moveFloor
 
-      floor.canvasX = moving % repeat;
+      floor.canvasX = moving % repeat
     },
 
     draw() {
@@ -69,7 +70,7 @@ function makeFloor() {
         floor.width, floor.height,
         floor.canvasX, floor.canvasY,
         floor.width, floor.height,
-      );
+      )
   
       context.drawImage(
         sprites,
@@ -77,23 +78,23 @@ function makeFloor() {
         floor.width, floor.height,
         (floor.canvasX + floor.width), floor.canvasY,
         floor.width, floor.height,
-      );
+      )
     },
   }
 
-  return floor;
+  return floor
 }
 
 function makeCollision(flappyBird, floor) {
-  const flappyBirdY = flappyBird.canvasY + flappyBird.height;
+  const flappyBirdY = flappyBird.canvasY + flappyBird.height
 
-  const floorY = floor.canvasY; 
+  const floorY = floor.canvasY 
 
   if (flappyBirdY >= floorY) {
-    return true;
+    return true
   }
 
-  return false;
+  return false
 }
 
 function makeFlappyBird() { 
@@ -107,7 +108,7 @@ function makeFlappyBird() {
     jumping: 4.6,
 
     jump() {
-      flappyBird.speed = -flappyBird.jumping;
+      flappyBird.speed = -flappyBird.jumping
     },
 
     gravity: 0.25,
@@ -116,15 +117,14 @@ function makeFlappyBird() {
     update() {
       if (makeCollision(flappyBird, global.floor)) {
         setTimeout(() => {
-          changeDisplay(display.over)
           hitAudio.play()
         }, 1)
-        return;
+        changeDisplay(display.over)
       }
 
-      flappyBird.speed = flappyBird.speed + flappyBird.gravity;
+      flappyBird.speed = flappyBird.speed + flappyBird.gravity
 
-      flappyBird.canvasY = flappyBird.canvasY + flappyBird.speed;
+      flappyBird.canvasY = flappyBird.canvasY + flappyBird.speed
     },
 
     movements: [
@@ -137,21 +137,21 @@ function makeFlappyBird() {
     actualFrame: 0,
 
     updateFrames() {
-      const framesInterval = 10;
-      const passOnInterval = frames % framesInterval === 0;
+      const framesInterval = 10
+      const passOnInterval = frames % framesInterval === 0
 
       if (passOnInterval) {
-        const baseIncrease = 1;
-        const increase = baseIncrease + flappyBird.actualFrame;
-        const baseLoop = flappyBird.movements.length;
+        const baseIncrease = 1
+        const increase = baseIncrease + flappyBird.actualFrame
+        const baseLoop = flappyBird.movements.length
         
-        flappyBird.actualFrame = increase % baseLoop;
+        flappyBird.actualFrame = increase % baseLoop
       }
     },
 
     draw() {
       flappyBird.updateFrames()
-      const { spriteX, spriteY } = flappyBird.movements[flappyBird.actualFrame];
+      const { spriteX, spriteY } = flappyBird.movements[flappyBird.actualFrame]
 
       context.drawImage(
         sprites,
@@ -159,11 +159,11 @@ function makeFlappyBird() {
         flappyBird.width, flappyBird.height,
         flappyBird.canvasX, flappyBird.canvasY,
         flappyBird.width, flappyBird.height,
-      );
+      )
     },
   }
 
-  return flappyBird;
+  return flappyBird
 }
 
 function makePipes() {
@@ -178,14 +178,14 @@ function makePipes() {
       spriteX: 52,
       spriteY: 169,
     },
-    distance: 80,
+    distance: 85,
     draw() {
       pipes.pipesList.forEach(list => {
-        const pipeRandomY = list.y;
-        const spacePipes = 90;
+        const pipeRandomY = list.y
+        const spacePipes = 90
   
-        const pipeSkyX = list.x;
-        const pipeSkyY = pipeRandomY;
+        const pipeSkyX = list.x
+        const pipeSkyY = pipeRandomY
   
         // Upper pipe
         context.drawImage(
@@ -194,11 +194,11 @@ function makePipes() {
           pipes.width, pipes.height,
           pipeSkyX, pipeSkyY,
           pipes.width, pipes.height,
-        );
+        )
 
         // Floor pipe
-        const pipeFloorX = list.x;
-        const pipeFloorY = pipes.height + spacePipes + pipeRandomY;
+        const pipeFloorX = list.x
+        const pipeFloorY = pipes.height + spacePipes + pipeRandomY
 
         context.drawImage(
           sprites,
@@ -206,7 +206,7 @@ function makePipes() {
           pipes.width, pipes.height,
           pipeFloorX, pipeFloorY,
           pipes.width, pipes.height,
-        );
+        )
 
         list.pipeSky = {
           x: pipeSkyX,
@@ -221,53 +221,53 @@ function makePipes() {
     },
 
     flappyBirdCollision(list){
-      const flappyHead = global.flappyBird.canvasY;
-      const flappyFeet = global.flappyBird.canvasY + global.flappyBird.height;
+      const flappyHead = global.flappyBird.canvasY
+      const flappyFeet = global.flappyBird.canvasY + global.flappyBird.height
 
 
       if(global.flappyBird.canvasX >= list.x)  {
 
         if(flappyHead <= list.pipeSky.y) {
-          return true;
+          return true
         }
 
         if(flappyFeet >= list.pipeFloor.y) {
-          return true;
+          return true
         }
       } 
 
-      return false;
+      return false
     },
 
     pipesList: [],
     update() {
-      const passedFrames = frames % 100 === 0;
+      const passedFrames = frames % 100 === 0
 
       if(passedFrames) {
         pipes.pipesList.push({
           x: screen.width,
-          y: -150 * (Math.random() + 1),
+          y: -175 * (Math.random() + 1),
         })
       }
 
       pipes.pipesList.forEach(list => {
-        list.x =  list.x - 2;
+        list.x =  list.x - 2
 
         if(pipes.flappyBirdCollision(list)) {
           setTimeout(() => {
-            changeDisplay(display.over);
-            hitAudio.play();
+            hitAudio.play()
           }, 1)
+          changeDisplay(display.over)
         }
 
         if(list.x + pipes.width<= 0) {
-          pipes.pipesList.shift();
+          pipes.pipesList.shift()
         }
 
       }
     )}
   }
-  return pipes;
+  return pipes
 }
 
 // Initial menu
@@ -285,7 +285,7 @@ const getReady = {
       getReady.width, getReady.height,
       getReady.canvasX, getReady.canvasY,
       getReady.width, getReady.height,
-    );
+    )
   }
 }
 
@@ -304,89 +304,89 @@ const gameOver = {
       gameOver.width, gameOver.height,
       gameOver.canvasX, gameOver.canvasY,
       gameOver.width, gameOver.height,
-    );
+    )
   },
   update() {
-    this.draw();
+    this.draw()
   }
 }
 
 // Screens
-const global = {};
+const global = {}
 
-let displayActive = {};
+let displayActive = {}
 
 function changeDisplay(newDisplay) {
-  displayActive = newDisplay;
+  displayActive = newDisplay
 
   if (displayActive.started) {
-    displayActive.started();
+    displayActive.started()
   }
   if(displayActive.over) {
-    displayActive.over();
+    displayActive.over()
   }
 }
 
 const display = {
   main: {
     started() {
-      global.flappyBird = makeFlappyBird();
-      global.floor = makeFloor();
-      global.pipes = makePipes();
+      global.flappyBird = makeFlappyBird()
+      global.floor = makeFloor()
+      global.pipes = makePipes()
     },
 
     draw() {
-      background.draw();
-      global.flappyBird.draw();
+      background.draw()
+      global.flappyBird.draw()
 
-      global.floor.draw();
-      getReady.draw();
+      global.floor.draw()
+      getReady.draw()
     },
 
     click() {
-      changeDisplay(display.game);
+      changeDisplay(display.game)
     },
 
     update() {
-      global.floor.update();
+      global.floor.update()
     },
   },
 
   game: {
     draw() {
-      background.draw();
-      global.pipes.draw();
-      global.floor.draw();
+      background.draw()
+      global.pipes.draw()
+      global.floor.draw()
 
-      global.flappyBird.draw();
+      global.flappyBird.draw()
     },
 
     click() {
-      global.flappyBird.jump();
+      global.flappyBird.jump()
     },
   
     update() {
-      global.flappyBird.update();
-      global.floor.update();
-      global.pipes.update();
+      global.flappyBird.update()
+      global.floor.update()
+      global.pipes.update()
     },
   },
 
   over: {
     draw() {
-      background.draw();
+      background.draw()
 
-      global.floor.draw();
-      gameOver.draw();
+      global.floor.draw()
+      gameOver.draw()
     },
     click() {
-      changeDisplay(display.main);
+      changeDisplay(display.main)
     },
     update() {
-      gameOver.draw();
+      gameOver.draw()
     }
   }
-};
+}
 
 
 window.addEventListener('click', () => {
@@ -395,16 +395,16 @@ window.addEventListener('click', () => {
   }
 })
 
-changeDisplay(display.main);
+changeDisplay(display.main)
 
 renderScreen()
 
 function renderScreen() {
-  displayActive.draw();
-  displayActive.update();
+  displayActive.draw()
+  displayActive.update()
 
-  frames = frames + 1;
-  points = points + 1;
+  frames = frames + 1
+  points = points + 1
 
-  requestAnimationFrame(renderScreen);
+  requestAnimationFrame(renderScreen)
 }
