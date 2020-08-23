@@ -6,4 +6,4 @@
 
 
 ### Link
-(Website) [https://r3nanp-flappy-bird-clone.netlify.app/]
+(https://r3nanp-flappy-bird-clone.netlify.app/) [Game]
