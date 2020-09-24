@@ -1,0 +1,19 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+}
+
+p {
+  font: 700 1rem sans-serif;
+  margin: 10px;
+}
+
