@@ -1,14 +1,7 @@
+import main from './scripts/index.js'
+
 let frames = 0
 let points = 0
-
-const sprites = new Image()
-sprites.src = './src/images/sprites.png'
-
-const hitAudio = new Audio()
-hitAudio.src = './src/effects/hitsound.mp3'
-
-const screen = document.getElementById('screen')
-const context = screen.getContext('2d')
 
 // Game styles
 const background = {
@@ -17,7 +10,7 @@ const background = {
   width: 275,
   height: 204,
   canvasX: 0,
-  canvasY: screen.height - 204,
+  canvasY: main.canvas.height - 204,
 
   draw() {
     /* Background movimentado */
@@ -26,25 +19,33 @@ const background = {
     const moving = background.canvasX - moveBackground
     background.canvasX = moving % repeat
 
-    context.fillStyle = '#70c5ce'
-    context.fillRect(0, 0, screen.width, screen.height)
+    main.context.fillStyle = '#70c5ce'
+    main.context.fillRect(0, 0, main.canvas.width, main.canvas.height)
 
-    context.drawImage(
-      sprites,
-      background.spriteX, background.spriteY, // x and y
-      background.width, background.height,    // cut on sprite
-      background.canvasX, background.canvasY,
-      background.width, background.height,
-      )
-
-    context.drawImage(
-      sprites,
-      background.spriteX, background.spriteY,
-      background.width, background.height,
-      (background.canvasX + background.width), background.canvasY,
-      background.width, background.height,
+    main.context.drawImage(
+      main.sprites,
+      background.spriteX,
+      background.spriteY, // x and y
+      background.width,
+      background.height, // cut on sprite
+      background.canvasX,
+      background.canvasY,
+      background.width,
+      background.height
     )
-  }
+
+    main.context.drawImage(
+      main.sprites,
+      background.spriteX,
+      background.spriteY,
+      background.width,
+      background.height,
+      background.canvasX + background.width,
+      background.canvasY,
+      background.width,
+      background.height
+    )
+  },
 }
 
 function makeFloor() {
@@ -54,7 +55,7 @@ function makeFloor() {
     width: 224,
     height: 112,
     canvasX: 0,
-    canvasY: screen.height - 112,
+    canvasY: main.canvas.height - 112,
     update() {
       const moveFloor = 1
       const repeat = floor.width / 2
@@ -64,20 +65,28 @@ function makeFloor() {
     },
 
     draw() {
-      context.drawImage(
-        sprites,
-        floor.spriteX, floor.spriteY,
-        floor.width, floor.height,
-        floor.canvasX, floor.canvasY,
-        floor.width, floor.height,
+      main.context.drawImage(
+        main.sprites,
+        floor.spriteX,
+        floor.spriteY,
+        floor.width,
+        floor.height,
+        floor.canvasX,
+        floor.canvasY,
+        floor.width,
+        floor.height
       )
-  
-      context.drawImage(
-        sprites,
-        floor.spriteX, floor.spriteY,
-        floor.width, floor.height,
-        (floor.canvasX + floor.width), floor.canvasY,
-        floor.width, floor.height,
+
+      main.context.drawImage(
+        main.sprites,
+        floor.spriteX,
+        floor.spriteY,
+        floor.width,
+        floor.height,
+        floor.canvasX + floor.width,
+        floor.canvasY,
+        floor.width,
+        floor.height
       )
     },
   }
@@ -88,7 +97,7 @@ function makeFloor() {
 function makeCollision(flappyBird, floor) {
   const flappyBirdY = flappyBird.canvasY + flappyBird.height
 
-  const floorY = floor.canvasY 
+  const floorY = floor.canvasY
 
   if (flappyBirdY >= floorY) {
     return true
@@ -97,7 +106,7 @@ function makeCollision(flappyBird, floor) {
   return false
 }
 
-function makeFlappyBird() { 
+function makeFlappyBird() {
   const flappyBird = {
     spriteX: 0,
     spriteY: 0,
@@ -117,7 +126,7 @@ function makeFlappyBird() {
     update() {
       if (makeCollision(flappyBird, global.floor)) {
         setTimeout(() => {
-          hitAudio.play()
+          main.hitAudio.play()
         }, 1)
         changeDisplay(display.over)
       }
@@ -128,10 +137,10 @@ function makeFlappyBird() {
     },
 
     movements: [
-      { spriteX: 0, spriteY: 0, },
-      { spriteX: 0, spriteY: 26, },
-      { spriteX: 0, spriteY: 52, },
-      { spriteX: 0, spriteY: 26, },
+      { spriteX: 0, spriteY: 0 },
+      { spriteX: 0, spriteY: 26 },
+      { spriteX: 0, spriteY: 52 },
+      { spriteX: 0, spriteY: 26 },
     ],
 
     actualFrame: 0,
@@ -144,7 +153,7 @@ function makeFlappyBird() {
         const baseIncrease = 1
         const increase = baseIncrease + flappyBird.actualFrame
         const baseLoop = flappyBird.movements.length
-        
+
         flappyBird.actualFrame = increase % baseLoop
       }
     },
@@ -153,12 +162,16 @@ function makeFlappyBird() {
       flappyBird.updateFrames()
       const { spriteX, spriteY } = flappyBird.movements[flappyBird.actualFrame]
 
-      context.drawImage(
-        sprites,
-        spriteX, spriteY,
-        flappyBird.width, flappyBird.height,
-        flappyBird.canvasX, flappyBird.canvasY,
-        flappyBird.width, flappyBird.height,
+      main.context.drawImage(
+        main.sprites,
+        spriteX,
+        spriteY,
+        flappyBird.width,
+        flappyBird.height,
+        flappyBird.canvasX,
+        flappyBird.canvasY,
+        flappyBird.width,
+        flappyBird.height
       )
     },
   }
@@ -183,58 +196,62 @@ function makePipes() {
       pipes.pipesList.forEach(list => {
         const pipeRandomY = list.y
         const spacePipes = 90
-  
+
         const pipeSkyX = list.x
         const pipeSkyY = pipeRandomY
-  
+
         // Upper pipe
-        context.drawImage(
-          sprites,
-          pipes.sky.spriteX, pipes.sky.spriteY,
-          pipes.width, pipes.height,
-          pipeSkyX, pipeSkyY,
-          pipes.width, pipes.height,
+        main.context.drawImage(
+          main.sprites,
+          pipes.sky.spriteX,
+          pipes.sky.spriteY,
+          pipes.width,
+          pipes.height,
+          pipeSkyX,
+          pipeSkyY,
+          pipes.width,
+          pipes.height
         )
 
         // Floor pipe
         const pipeFloorX = list.x
         const pipeFloorY = pipes.height + spacePipes + pipeRandomY
 
-        context.drawImage(
-          sprites,
-          pipes.floor.spriteX, pipes.floor.spriteY,
-          pipes.width, pipes.height,
-          pipeFloorX, pipeFloorY,
-          pipes.width, pipes.height,
+        main.context.drawImage(
+          main.sprites,
+          pipes.floor.spriteX,
+          pipes.floor.spriteY,
+          pipes.width,
+          pipes.height,
+          pipeFloorX,
+          pipeFloorY,
+          pipes.width,
+          pipes.height
         )
-
-        list.pipeSky = {
+        ;(list.pipeSky = {
           x: pipeSkyX,
-          y: pipes.height + pipeSkyY
-        },
-
-        list.pipeFloor = {
-          x: pipeFloorX,
-          y: pipeFloorY,
-        }
+          y: pipes.height + pipeSkyY,
+        }),
+          (list.pipeFloor = {
+            x: pipeFloorX,
+            y: pipeFloorY,
+          })
       })
     },
 
-    flappyBirdCollision(list){
+    flappyBirdCollision(list) {
       const flappyHead = global.flappyBird.canvasY
       const flappyFeet = global.flappyBird.canvasY + global.flappyBird.height
 
-
-      if(global.flappyBird.canvasX >= list.x)  {
-
-        if(flappyHead <= list.pipeSky.y) {
+      if (global.flappyBird.canvasX >= list.x) {
+        if (flappyHead <= list.pipeSky.y) {
           return true
         }
 
-        if(flappyFeet >= list.pipeFloor.y) {
+        if (flappyFeet >= list.pipeFloor.y) {
           return true
         }
-      } 
+      }
 
       return false
     },
@@ -243,72 +260,30 @@ function makePipes() {
     update() {
       const passedFrames = frames % 100 === 0
 
-      if(passedFrames) {
+      if (passedFrames) {
         pipes.pipesList.push({
-          x: screen.width,
+          x: main.canvas.width,
           y: -175 * (Math.random() + 1),
         })
       }
 
       pipes.pipesList.forEach(list => {
-        list.x =  list.x - 2
+        list.x = list.x - 2
 
-        if(pipes.flappyBirdCollision(list)) {
+        if (pipes.flappyBirdCollision(list)) {
           setTimeout(() => {
-            hitAudio.play()
+            main.hitAudio.play()
           }, 1)
           changeDisplay(display.over)
         }
 
-        if(list.x + pipes.width<= 0) {
+        if (list.x + pipes.width <= 0) {
           pipes.pipesList.shift()
         }
-
-      }
-    )}
+      })
+    },
   }
   return pipes
-}
-
-// Initial menu
-const getReady = {
-  spriteX: 134,
-  spriteY: 0,
-  width: 174,
-  height: 152,
-  canvasX: (screen.width / 2) - 174 / 2,
-  canvasY: 50,
-  draw() {
-    context.drawImage(
-      sprites,
-      getReady.spriteX, getReady.spriteY,
-      getReady.width, getReady.height,
-      getReady.canvasX, getReady.canvasY,
-      getReady.width, getReady.height,
-    )
-  }
-}
-
-const gameOver = {
-  spriteX: 131,
-  spriteY: 155,
-  width: 227,
-  height: 199,
-  canvasX: (screen.width / 2) - 227 / 2,
-  canvasY: 50,
-
-  draw() {
-    context.drawImage(
-      sprites,
-      gameOver.spriteX, gameOver.spriteY,
-      gameOver.width, gameOver.height,
-      gameOver.canvasX, gameOver.canvasY,
-      gameOver.width, gameOver.height,
-    )
-  },
-  update() {
-    this.draw()
-  }
 }
 
 // Screens
@@ -322,7 +297,7 @@ function changeDisplay(newDisplay) {
   if (displayActive.started) {
     displayActive.started()
   }
-  if(displayActive.over) {
+  if (displayActive.over) {
     displayActive.over()
   }
 }
@@ -340,7 +315,7 @@ const display = {
       global.flappyBird.draw()
 
       global.floor.draw()
-      getReady.draw()
+      main.getReady.draw()
     },
 
     click() {
@@ -364,7 +339,7 @@ const display = {
     click() {
       global.flappyBird.jump()
     },
-  
+
     update() {
       global.flappyBird.update()
       global.floor.update()
@@ -377,17 +352,16 @@ const display = {
       background.draw()
 
       global.floor.draw()
-      gameOver.draw()
+      main.gameOver.draw()
     },
     click() {
       changeDisplay(display.main)
     },
     update() {
-      gameOver.draw()
-    }
-  }
+      main.gameOver.draw()
+    },
+  },
 }
-
 
 window.addEventListener('click', () => {
   if (displayActive.click || displayActive.over) {
