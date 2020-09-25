@@ -11,4 +11,4 @@
 <img src="./.github/screenshot.png" />
 
 ## Link
-[Site](https://r3nanp-flappy-bird-clone.netlify.app/)
+[Site](https://r3nanp-flappy-bird-clone.netlify.app/src)

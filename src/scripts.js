@@ -1,111 +1,11 @@
 import main from './scripts/index.js'
 
+import makeCollision from './scripts/makeCollision.js'
+
 let frames = 0
 let points = 0
 
 // Game styles
-const background = {
-  spriteX: 390,
-  spriteY: 0,
-  width: 275,
-  height: 204,
-  canvasX: 0,
-  canvasY: main.canvas.height - 204,
-
-  draw() {
-    /* Background movimentado */
-    const moveBackground = 1
-    const repeat = background.width / 2
-    const moving = background.canvasX - moveBackground
-    background.canvasX = moving % repeat
-
-    main.context.fillStyle = '#70c5ce'
-    main.context.fillRect(0, 0, main.canvas.width, main.canvas.height)
-
-    main.context.drawImage(
-      main.sprites,
-      background.spriteX,
-      background.spriteY, // x and y
-      background.width,
-      background.height, // cut on sprite
-      background.canvasX,
-      background.canvasY,
-      background.width,
-      background.height
-    )
-
-    main.context.drawImage(
-      main.sprites,
-      background.spriteX,
-      background.spriteY,
-      background.width,
-      background.height,
-      background.canvasX + background.width,
-      background.canvasY,
-      background.width,
-      background.height
-    )
-  },
-}
-
-function makeFloor() {
-  const floor = {
-    spriteX: 0,
-    spriteY: 610,
-    width: 224,
-    height: 112,
-    canvasX: 0,
-    canvasY: main.canvas.height - 112,
-    update() {
-      const moveFloor = 1
-      const repeat = floor.width / 2
-      const moving = floor.canvasX - moveFloor
-
-      floor.canvasX = moving % repeat
-    },
-
-    draw() {
-      main.context.drawImage(
-        main.sprites,
-        floor.spriteX,
-        floor.spriteY,
-        floor.width,
-        floor.height,
-        floor.canvasX,
-        floor.canvasY,
-        floor.width,
-        floor.height
-      )
-
-      main.context.drawImage(
-        main.sprites,
-        floor.spriteX,
-        floor.spriteY,
-        floor.width,
-        floor.height,
-        floor.canvasX + floor.width,
-        floor.canvasY,
-        floor.width,
-        floor.height
-      )
-    },
-  }
-
-  return floor
-}
-
-function makeCollision(flappyBird, floor) {
-  const flappyBirdY = flappyBird.canvasY + flappyBird.height
-
-  const floorY = floor.canvasY
-
-  if (flappyBirdY >= floorY) {
-    return true
-  }
-
-  return false
-}
-
 function makeFlappyBird() {
   const flappyBird = {
     spriteX: 0,
@@ -303,15 +203,15 @@ function changeDisplay(newDisplay) {
 }
 
 const display = {
-  main: {
+  key: {
     started() {
       global.flappyBird = makeFlappyBird()
-      global.floor = makeFloor()
+      global.floor = main.floor
       global.pipes = makePipes()
     },
 
     draw() {
-      background.draw()
+      main.background.draw()
       global.flappyBird.draw()
 
       global.floor.draw()
@@ -329,7 +229,7 @@ const display = {
 
   game: {
     draw() {
-      background.draw()
+      main.background.draw()
       global.pipes.draw()
       global.floor.draw()
 
@@ -349,13 +249,13 @@ const display = {
 
   over: {
     draw() {
-      background.draw()
+      main.background.draw()
 
       global.floor.draw()
       main.gameOver.draw()
     },
     click() {
-      changeDisplay(display.main)
+      changeDisplay(display.key)
     },
     update() {
       main.gameOver.draw()
@@ -369,7 +269,7 @@ window.addEventListener('click', () => {
   }
 })
 
-changeDisplay(display.main)
+changeDisplay(display.key)
 
 renderScreen()
 

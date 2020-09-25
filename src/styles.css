@@ -8,12 +8,11 @@ body {
 
 canvas {
   border: 1px solid black;
-  display: block;
-  margin: 0 auto;
+  cursor: pointer;
 }
 
 p {
   font: 700 1rem sans-serif;
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
