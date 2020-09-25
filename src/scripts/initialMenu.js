@@ -21,7 +21,7 @@ export default function (main) {
       )
     },
   }
-
+  // Game Over menu
   main.gameOver = {
     spriteX: 131,
     spriteY: 155,

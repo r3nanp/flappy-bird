@@ -256,6 +256,7 @@ const display = {
     },
     click() {
       changeDisplay(display.key)
+      alert(`You've earned ${points} points`)
     },
     update() {
       main.gameOver.draw()
