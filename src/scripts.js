@@ -31,9 +31,9 @@ function makeFlappyBird() {
         changeDisplay(display.over)
       }
 
-      flappyBird.speed = flappyBird.speed + flappyBird.gravity
+      flappyBird.speed += flappyBird.gravity
 
-      flappyBird.canvasY = flappyBird.canvasY + flappyBird.speed
+      flappyBird.canvasY += flappyBird.speed
     },
 
     movements: [
@@ -257,6 +257,7 @@ const display = {
     click() {
       changeDisplay(display.key)
       alert(`You've earned ${points} points`)
+      localStorage.setItem('bestPoints', points)
     },
     update() {
       main.gameOver.draw()
@@ -279,7 +280,9 @@ function renderScreen() {
   displayActive.update()
 
   frames = frames + 1
-  points = points + 1
+  points = setInterval(() => {
+    points += 1
+  }, 3000);
 
   requestAnimationFrame(renderScreen)
 }
