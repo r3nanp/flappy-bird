@@ -31,9 +31,9 @@ function makeFlappyBird() {
         changeDisplay(display.over)
       }
 
-      flappyBird.speed = flappyBird.speed + flappyBird.gravity
+      flappyBird.speed += flappyBird.gravity
 
-      flappyBird.canvasY = flappyBird.canvasY + flappyBird.speed
+      flappyBird.canvasY += flappyBird.speed
     },
 
     movements: [
