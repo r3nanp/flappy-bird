@@ -6,6 +6,7 @@ import createBackground from './background.js'
 
 import changeDisplay from './changeDisplay.js'
 import makeFlappyBird from './makeFlappyBird.js'
+import makePipes from './makePipes.js'
 import makeDisplay from './display.js'
 import makeFloor from './floor.js'
 
@@ -17,6 +18,7 @@ addEffects(main)
 createBackground(main)
 makeFloor(main)
 
+makePipes(main)
 makeFlappyBird(main)
 makeDisplay(main)
 changeDisplay(main)

@@ -1,5 +1,6 @@
 export default function (main) {
   const global = {}
+
    main.display = {
     key: {
       started() {
