@@ -1,7 +1,7 @@
+torimport flappyBirdCollision from './makeFlappyPipeCollision.js'
+
 export default function (main) {
   main.makePipes = function () {
-    const { canvasX, canvasY, height } = main.makeFlappyBird()
-
     const pipes = {
       width: 52,
       height: 400,
@@ -17,7 +17,7 @@ export default function (main) {
       draw() {
         pipes.pipesList.forEach(list => {
           const pipeRandomY = list.y
-          const spacePipes = 90
+          const spacePipes = 92
 
           const pipeSkyX = list.x
           const pipeSkyY = pipeRandomY
@@ -54,32 +54,13 @@ export default function (main) {
           list.pipeSky = {
             x: pipeSkyX,
             y: pipes.height + pipeSkyY,
-          }
+          },
 
           list.pipeFloor = {
             x: pipeFloorX,
             y: pipeFloorY,
           }
-
         })
-      },
-
-      flappyBirdCollision(list) {
-        const flappyHead = canvasY
-        const flappyFeet = flappyHead + height
-
-        if (canvasX >= list.x) {
-          if (flappyHead <= list.pipeSky.y) {
-            console.log('invadiu o de cima')
-            return true
-          }
-
-          if (flappyFeet >= list.pipeFloor.y) {
-            console.log('invadiu o de baixo')
-            return true
-          }
-        }
-          return false
       },
 
       pipesList: [],
@@ -89,14 +70,14 @@ export default function (main) {
         if (passedFrames) {
           pipes.pipesList.push({
             x: main.canvas.width,
-            y: -175 * (Math.random() + 1),
+            y: -150 * (Math.random() + 1),
           })
         }
 
         pipes.pipesList.forEach(list => {
           list.x -= 2
 
-          if (pipes.flappyBirdCollision(list)) {
+          if (flappyBirdCollision(list)) {
             setTimeout(() => {
               main.hitAudio.play()
             }, 1)
