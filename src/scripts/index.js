@@ -7,7 +7,7 @@ import createBackground from './background.js'
 import changeDisplay from './changeDisplay.js'
 import makeFlappyBird from './makeFlappyBird.js'
 import makePipes from './makePipes.js'
-import makeDisplay from './display.js'
+import createDisplay from './display.js'
 import makeFloor from './floor.js'
 
 const main = {}
@@ -17,10 +17,10 @@ createCanvas(main)
 addEffects(main)
 createBackground(main)
 makeFloor(main)
+createDisplay(main)
 
 makePipes(main)
 makeFlappyBird(main)
-makeDisplay(main)
 changeDisplay(main)
 initialMenu(main)
 

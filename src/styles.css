@@ -6,13 +6,17 @@ body {
   align-items: center;
 }
 
-canvas {
-  border: 1px solid black;
-  cursor: pointer;
+header {
+  position: fixed;
+  top: 0;
+  margin-bottom: 20px;
 }
 
 p {
   font: 700 1rem sans-serif;
-  margin-bottom: 20px;
 }
 
+canvas {
+  border: 1px solid black;
+  cursor: pointer;
+}

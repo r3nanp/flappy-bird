@@ -1,4 +1,4 @@
-torimport flappyBirdCollision from './makeFlappyPipeCollision.js'
+import flappyBirdCollision from './makeFlappyPipeCollision.js'
 
 export default function (main) {
   main.makePipes = function () {
