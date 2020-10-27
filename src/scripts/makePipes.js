@@ -64,6 +64,7 @@ export default function (main) {
       },
 
       pipesList: [],
+
       update() {
         const passedFrames = main.frames % 100 === 0
 
@@ -88,6 +89,7 @@ export default function (main) {
             pipes.pipesList.shift()
           }
         })
+
       },
     }
     return pipes
