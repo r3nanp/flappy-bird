@@ -113,6 +113,12 @@ window.addEventListener('click', () => {
   }
 })
 
+window.addEventListener('keydown', event => {
+  if (main.displayActive.click && !event.repeat && event.code === 'Space') {
+    main.displayActive.click()
+  }
+})
+
 main.changeDisplay(main.display.key)
 
 main.renderScreen()
