@@ -57,4 +57,4 @@ $ git push origin <branch>
 
 #### Link
 
-[Site](https://r3nanp-flappy-bird-clone.netlify.app/src)
+[Site](https://r3nanp-flappy-bird-clone.netlify.app)
