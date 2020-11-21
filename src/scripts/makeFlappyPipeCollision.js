@@ -1,12 +1,12 @@
-import main from './index.js'
+import { global } from './display.js'
 
 export default function flappyBirdCollision(list) {
-  const { canvasX, canvasY, height } = main.makeFlappyBird()
+  const flappyBird = global.flappyBird
 
-  const flappyHead = canvasY
-  const flappyFeet = canvasY + height
+  const flappyHead = flappyBird.canvasY
+  const flappyFeet = flappyBird.canvasY + flappyBird.height
 
-  if (canvasX >= list.x) {
+  if (flappyBird.canvasX >= list.x) {
     if (flappyHead <= list.pipeSky.y) {
       return true
     }
@@ -15,5 +15,6 @@ export default function flappyBirdCollision(list) {
       return true
     }
   }
+
   return false
 }
