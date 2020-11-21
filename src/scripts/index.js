@@ -1,5 +1,5 @@
-import createRender from './createRender.js'
 import createCanvas from './canvas.js'
+import createRender from './createRender.js'
 import addEffects from './effects.js'
 import initialMenu from './initialMenu.js'
 import createBackground from './background.js'
