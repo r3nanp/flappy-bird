@@ -1,7 +1,7 @@
 import makeCollision from './makeCollision.js'
 
 export default function (main) {
-   main.makeFlappyBird = function () {
+   main.makeFlappyBird = () => {
     const flappyBird = {
       spriteX: 0,
       spriteY: 0,

@@ -1,7 +1,7 @@
 import flappyBirdCollision from './makeFlappyPipeCollision.js'
 
 export default function (main) {
-  main.makePipes = function () {
+  main.makePipes = () => {
     const pipes = {
       width: 52,
       height: 400,
