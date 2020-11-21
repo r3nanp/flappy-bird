@@ -5,7 +5,7 @@ export default function (main) {
     key: {
       started() {
         global.flappyBird = main.makeFlappyBird()
-        global.floor = main.floor
+        global.floor = main.createFloor()
         global.pipes = main.makePipes()
       },
 
