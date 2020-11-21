@@ -14,13 +14,20 @@ export default function (main) {
         spriteY: 169,
       },
       distance: 87,
+      pipeList: [],
+
       draw() {
-        pipes.pipesList.forEach(list => {
+        pipes.pipeList.forEach(list => {
           const pipeRandomY = list.y
           const spacePipes = 92
 
           const pipeSkyX = list.x
           const pipeSkyY = pipeRandomY
+
+          list.pipeSky = {
+            x: pipeSkyX,
+            y: pipes.height + pipeSkyY,
+          }
 
           // Upper pipe
           main.context.drawImage(
@@ -39,6 +46,11 @@ export default function (main) {
           const pipeFloorX = list.x
           const pipeFloorY = pipes.height + spacePipes + pipeRandomY
 
+          list.pipeFloor = {
+            x: pipeFloorX,
+            y: pipeFloorY,
+          }
+
           main.context.drawImage(
             main.sprites,
             pipes.floor.spriteX,
@@ -50,33 +62,21 @@ export default function (main) {
             pipes.width,
             pipes.height
           )
-
-          list.pipeSky = {
-            x: pipeSkyX,
-            y: pipes.height + pipeSkyY,
-          },
-
-          list.pipeFloor = {
-            x: pipeFloorX,
-            y: pipeFloorY,
-          }
         })
       },
-
-      pipesList: [],
 
       update() {
         const passedFrames = main.frames % 100 === 0
 
         if (passedFrames) {
-          pipes.pipesList.push({
+          pipes.pipeList.push({
             x: main.canvas.width,
             y: -150 * (Math.random() + 1),
           })
         }
 
-        pipes.pipesList.forEach(list => {
-          list.x -= 2
+        pipes.pipeList.forEach(list => {
+          list.x = list.x - 2
 
           if (flappyBirdCollision(list)) {
             setTimeout(() => {
@@ -86,10 +86,9 @@ export default function (main) {
           }
 
           if (list.x + pipes.width <= 0) {
-            pipes.pipesList.shift()
+            pipes.pipeList.shift()
           }
         })
-
       },
     }
     return pipes
