@@ -1,7 +1,8 @@
-export default function makeCollision(flappyBird, floor) {
-  const flappyBirdY = flappyBird.canvasY + flappyBird.height
+import { global } from './display.js'
 
-  const floorY = floor.canvasY
+export default function makeCollision(flappyBird, _floor) {
+  const flappyBirdY = flappyBird.canvasY + flappyBird.height
+  const floorY = global.floor.canvasY
 
   if (flappyBirdY >= floorY) {
     return true

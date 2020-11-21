@@ -1,43 +1,46 @@
 export default function (main) {
-  main.floor = {
-    spriteX: 0,
-    spriteY: 610,
-    width: 224,
-    height: 112,
-    canvasX: 0,
-    canvasY: main.canvas.height - 112,
-    update() {
-      const moveFloor = 1
-      const repeat = main.floor.width / 2
-      const moving = main.floor.canvasX - moveFloor
+  main.createFloor = () => {
+    const floor = {
+      spriteX: 0,
+      spriteY: 610,
+      width: 224,
+      height: 112,
+      canvasX: 0,
+      canvasY: main.canvas.height - 112,
+      update() {
+        const moveFloor = 1
+        const repeat = floor.width / 2
+        const moving = floor.canvasX - moveFloor
 
-      main.floor.canvasX = moving % repeat
-    },
+        floor.canvasX = moving % repeat
+      },
 
-    draw() {
-      main.context.drawImage(
-        main.sprites,
-        main.floor.spriteX,
-        main.floor.spriteY,
-        main.floor.width,
-        main.floor.height,
-        main.floor.canvasX,
-        main.floor.canvasY,
-        main.floor.width,
-        main.floor.height
-      )
+      draw() {
+        main.context.drawImage(
+          main.sprites,
+          floor.spriteX,
+          floor.spriteY,
+          floor.width,
+          floor.height,
+          floor.canvasX,
+          floor.canvasY,
+          floor.width,
+          floor.height
+        )
 
-      main.context.drawImage(
-        main.sprites,
-        main.floor.spriteX,
-        main.floor.spriteY,
-        main.floor.width,
-        main.floor.height,
-        main.floor.canvasX + main.floor.width,
-        main.floor.canvasY,
-        main.floor.width,
-        main.floor.height
-      )
-    },
+        main.context.drawImage(
+          main.sprites,
+          floor.spriteX,
+          floor.spriteY,
+          floor.width,
+          floor.height,
+          floor.canvasX + floor.width,
+          floor.canvasY,
+          floor.width,
+          floor.height
+        )
+      },
+    }
+    return floor
   }
 }
