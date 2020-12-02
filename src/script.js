@@ -1,6 +1,6 @@
 import main from './scripts/index.js'
 
-window.addEventListener('click', () => {
+window.addEventListener('mousedown', () => {
   if (main.displayActive.click || main.displayActive.over) {
     main.displayActive.click()
   }
