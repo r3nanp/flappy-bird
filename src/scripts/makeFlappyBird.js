@@ -1,4 +1,4 @@
-import makeCollision from './makeCollision.js'
+import makeFloorCollision from './makeFloorCollision.js'
 
 export default function (main) {
    main.makeFlappyBird = () => {
@@ -19,7 +19,7 @@ export default function (main) {
       speed: 0,
 
       update() {
-        if (makeCollision(flappyBird, main.floor)) {
+        if (makeFloorCollision(flappyBird, main.floor)) {
           setTimeout(() => {
             main.hitAudio.play()
           }, 1)

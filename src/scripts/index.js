@@ -1,7 +1,7 @@
 import createCanvas from './canvas.js'
 import createRender from './createRender.js'
 import addEffects from './effects.js'
-import initialMenu from './initialMenu.js'
+import createMenus from './menus.js'
 import createBackground from './background.js'
 
 import changeDisplay from './changeDisplay.js'
@@ -22,6 +22,6 @@ createDisplay(main)
 makePipes(main)
 makeFlappyBird(main)
 changeDisplay(main)
-initialMenu(main)
+createMenus(main)
 
 export default main
