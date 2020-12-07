@@ -12,8 +12,8 @@
 
 <div align="center">
 
-![r3nanp](https://img.shields.io/badge/r3nanp-flappy--bird-blue?style=flat-square)
-![license mit](https://img.shields.io/github/license/r3nanp/flappy-bird?color=blue&label=LICENSE&logo=github&style=flat-square)
+![r3nanp](https://img.shields.io/badge/r3nanp-flappy--bird-blue?style=for-the-badge)
+![license mit](https://img.shields.io/github/license/r3nanp/flappy-bird?color=blue&label=LICENSE&logo=github&style=for-the-badge)
 
 </div>
 
