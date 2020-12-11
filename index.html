@@ -2,14 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate"
+    />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="public/flappyicon.png" />
-    <link rel="stylesheet" href="./src/styles.css" />
-    <meta
-      property="og:image"
-      content="https://github.com/r3nanp/flappy-bird/blob/main/.github/screenshot.png"
-    />
     <title>Flappy Bird Clone</title>
+
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow-y: hidden;
+
+        background: #e1e1e6;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font: 700 1rem Arial, sans-serif;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      canvas {
+        border: 1px solid black;
+        cursor: pointer;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
+        image-rendering: -moz-crisp-edges;
+        -webkit-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+        box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+        margin-bottom: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+        display: inline-block;
+        vertical-align: top;
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -17,6 +63,6 @@
     </header>
 
     <canvas width="320" height="480"></canvas>
-    <script src="./src/script.js" type="module"></script>
+    <script src="./src/game.js" type="module"></script>
   </body>
 </html>

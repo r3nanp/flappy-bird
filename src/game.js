@@ -7,7 +7,10 @@ window.addEventListener('mousedown', () => {
 })
 
 window.addEventListener('keydown', event => {
-  if (main.displayActive.click && !event.repeat && event.code === 'Space') {
+  if (
+    (main.displayActive.click && !event.repeat && event.code === 'Space') ||
+    event.key === 'ArrowUp'
+  ) {
     main.displayActive.click()
   }
 })
