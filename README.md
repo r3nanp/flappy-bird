@@ -12,49 +12,24 @@
 
 <div align="center">
 
-![r3nanp](https://img.shields.io/badge/r3nanp-flappy--bird-blue?style=for-the-badge)
+![r3nanp](https://img.shields.io/badge/r3nanp-flappy--bird-blue?style=for-the-badge&logo=twitter&logoColor=white)
 ![license mit](https://img.shields.io/github/license/r3nanp/flappy-bird?color=blue&label=LICENSE&logo=github&style=for-the-badge)
 
 </div>
 
+**Do you want to contribute?**
+<a href="./.github/CONTRIBUTING.md"> Check step by step </a>
 ---
 
 ## Technologies Used 🛠
 
 - Canvas
 - Javascript
-
-## How to run and contribute 🤔
-
-```
-# Clone repository and open in your browser
-
-git clone https://github.com/r3nanp/flappy-bird.git
-```
-### How to Fork the project 💪
-
-```
-# Create a new branch with your changes:
-
-$ git checkout -b <branch>
-```
-
-```
-# Save your changes and create a commit with a message telling what you did:
-
-$ git commit -m "<commit>"
-```
-
-```
-# Submit your changes:
-
-$ git push origin <branch>
-```
 ---
-#### Screenshot
+### Screenshot
 
 <img src="./.github/screenshot.png" />
 
-#### Link
+### Link
 
 [Site](https://r3nanp-flappy-bird-clone.netlify.app)
