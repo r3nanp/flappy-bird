@@ -6,7 +6,7 @@
 
 <div align="center">
 
-  A clone of Flappy Bird written in **Javascript** and **HTML Canvas**, with **design pattern Decorator**.
+  An clone of Flappy Bird written in **Javascript** and **HTML Canvas**, with **design pattern Decorator**.
 
 </div>
 
