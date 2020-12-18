@@ -1,3 +1,4 @@
+import { score } from './createScore.js'
 export const global = {}
 
 export default function (main) {
@@ -27,12 +28,16 @@ export default function (main) {
     },
 
     game: {
+      started() {
+        global.score = main.createScore()
+      },
       draw() {
         main.background.draw()
         global.pipes.draw()
         global.floor.draw()
 
         global.flappyBird.draw()
+        global.score.draw()
       },
 
       click() {
@@ -43,6 +48,7 @@ export default function (main) {
         global.flappyBird.update()
         global.floor.update()
         global.pipes.update()
+        global.score.update()
       },
     },
 
@@ -55,7 +61,7 @@ export default function (main) {
       },
       click() {
         main.changeDisplay(main.display.key)
-        alert(`You've earned ${main.points} points`)
+        alert(`You've earned ${score} points`)
         localStorage.setItem('bestPoints', main.points)
       },
       update() {
