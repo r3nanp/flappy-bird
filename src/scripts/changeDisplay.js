@@ -1,5 +1,5 @@
 export default function (main) {
-  main.changeDisplay = function (newDisplay) {
+  main.changeDisplay = newDisplay => {
     main.displayActive = newDisplay
 
     if (main.displayActive.started) {
