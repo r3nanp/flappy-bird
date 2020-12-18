@@ -1,7 +1,7 @@
 import makeFloorCollision from './makeFloorCollision.js'
 
 export default function (main) {
-   main.makeFlappyBird = () => {
+  main.makeFlappyBird = () => {
     const flappyBird = {
       spriteX: 0,
       spriteY: 0,
@@ -20,9 +20,7 @@ export default function (main) {
 
       update() {
         if (makeFloorCollision(flappyBird, main.floor)) {
-          setTimeout(() => {
-            main.hitAudio.play()
-          }, 1)
+          main.hitAudio.play()
           main.changeDisplay(main.display.over)
         }
 

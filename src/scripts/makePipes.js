@@ -79,9 +79,7 @@ export default function (main) {
           list.x = list.x - 2
 
           if (flappyBirdCollision(list)) {
-            setTimeout(() => {
-              main.hitAudio.play()
-            }, 1)
+            main.hitAudio.play()
             main.changeDisplay(main.display.over)
           }
 
