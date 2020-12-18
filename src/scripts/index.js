@@ -3,6 +3,7 @@ import createRender from './createRender.js'
 import addEffects from './effects.js'
 import createMenus from './menus.js'
 import createBackground from './background.js'
+import createScore from './createScore.js'
 
 import changeDisplay from './changeDisplay.js'
 import makeFlappyBird from './makeFlappyBird.js'
@@ -23,5 +24,6 @@ makePipes(main)
 makeFlappyBird(main)
 changeDisplay(main)
 createMenus(main)
+createScore(main)
 
 export default main

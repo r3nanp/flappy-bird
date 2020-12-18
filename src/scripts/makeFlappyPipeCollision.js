@@ -6,7 +6,7 @@ export default function flappyBirdCollision(list) {
   const flappyHead = flappyBird.canvasY
   const flappyFeet = flappyBird.canvasY + flappyBird.height
 
-  if (flappyBird.canvasX >= list.x) {
+  if ((flappyBird.canvasX + flappyBird.width)>= list.x) {
     if (flappyHead <= list.pipeSky.y) {
       return true
     }
