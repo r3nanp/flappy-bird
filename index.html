@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('src/sw.js')
+      }
+    </script>
+
     <meta charset="UTF-8" />
+    <link rel="manifest" href="public/manifest.json" />
+
     <meta
       http-equiv="Cache-Control"
       content="no-cache, no-store, must-revalidate"
