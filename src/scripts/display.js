@@ -63,6 +63,8 @@ export default function (main) {
         main.changeDisplay(main.display.key)
         alert(`You've earned ${score} points`)
         localStorage.setItem('bestPoints', main.points)
+
+        global.score.over()
       },
       update() {
         main.gameOver.draw()
