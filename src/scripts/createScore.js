@@ -16,6 +16,9 @@ export default function (main) {
           score += 1
         }
       },
+      over() {
+        score = 0
+      }
     }
     return scoreboard
   }
