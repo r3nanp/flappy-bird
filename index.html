@@ -1,30 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('src/sw.js')
-      }
-    </script>
-
     <meta charset="UTF-8" />
-    <link rel="manifest" href="public/manifest.json" />
-
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
+    <link rel="manifest" href="./public/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="My portfolio using new techs!" />
+    <meta property="og:image" content="./public/images/logo@512x.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:site_name" content="Renan Portfolio" />
+    <meta property="og:title" content="Renan Pereira - Portfolio" />
+    <meta property="og:description" content="My portfolio using new techs!" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta name="author" content="r3nanp" />
+    <meta name="theme-color" content="#FFFF00" />
+    <meta name="keywords" content="r3nanp, Renan Pereira, flappy-bird" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Renan Pereira - Portfolio" />
+    <meta name="twitter:description" content="My portfolio using new techs!" />
+    <meta name="twitter:image" content="./public/images/logo@512x.png" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https:/fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="apple-touch-icon"
+      sizes="192x192"
+      href="./public/images/logo@192x.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="512x512"
+      href="./public/images/logo@512x.png"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="public/flappyicon.png" />
-    <title>Flappy Bird Clone</title>
+    <link rel="icon" href="./public/flappyicon.png" />
 
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('./public/serviceworker.js')
+          .then(() => {
+            console.log('service worker registered')
+          })
+          .catch(() => {
+            console.warn('service worker failed')
+          })
+      }
+    </script>
+    <title>Flappy Bird</title>
     <style>
       body {
         min-height: 100vh;
@@ -34,7 +62,7 @@
         align-items: center;
         overflow-y: hidden;
 
-        background: #e1e1e6;
+        background: #fafafa;
       }
 
       header {
@@ -73,11 +101,14 @@
     </style>
   </head>
   <body>
+    <noscript
+      >Você precisa habilitar o Javascript para este app funcionar :)</noscript
+    >
     <header>
       <p>Made by Renan with 💓</p>
     </header>
 
     <canvas width="320" height="480"></canvas>
-    <script src="./src/game.js" type="module"></script>
+    <script src="./src/game.js" type="module" defer></script>
   </body>
 </html>
