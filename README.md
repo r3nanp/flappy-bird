@@ -6,7 +6,7 @@
 
 <div align="center">
 
-  An clone of Flappy Bird written in **Javascript** and **HTML Canvas**, with **design pattern Decorator**.
+  An clone of Flappy Bird written in **Javascript** and **HTML Canvas API**, with **design pattern Decorator**.
 
 </div>
 
@@ -32,4 +32,4 @@
 
 ### Link
 
-[Site](https://r3nanp-flappy-bird-clone.netlify.app)
+[flappy bird game](https://r3nanp-flappybird.netlify.app/)
