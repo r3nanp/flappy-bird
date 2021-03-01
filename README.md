@@ -1,35 +1,43 @@
-<div align="center">
-
 # 🐦 Flappy-Bird
 
-</div>
 
-<div align="center">
+> An clone of Flappy Bird written in Javascript and Canvas API, with design pattern Decorator.
 
-  An clone of Flappy Bird written in **Javascript** and **HTML Canvas API**, with **design pattern Decorator**.
-
-</div>
-
-<div align="center">
+---
 
 ![r3nanp](https://img.shields.io/badge/r3nanp-flappy--bird-blue?style=for-the-badge&logo=twitter&logoColor=white)
 ![license mit](https://img.shields.io/github/license/r3nanp/flappy-bird?color=blue&label=LICENSE&logo=github&style=for-the-badge)
 
-</div>
+# Contributing 🎉
 
-**Do you want to contribute?**
-<a href="./.github/CONTRIBUTING.md"> Check step by step </a>
----
+[Check this step by step](./.github/CONTRIBUTING.md)
 
-## Technologies Used 🛠
 
-- Canvas
+# Technologies Used 🛠
+
+- HTML
+- Canvas API
 - Javascript
----
-### Screenshot
+
+# How to run 👷‍♂️
+```
+# Clone repository
+
+$ git clone https://github.com/r3nanp/flappy-bird.git
+```
+
+```
+# Run in your browser:
+
+Open the index.html file in your browser.
+
+```
+
+# Screenshot
 
 <img src="./.github/screenshot.png" />
+<br />
 
-### Link
+# Link
 
-[flappy bird game](https://r3nanp-flappybird.netlify.app/)
+[Flappy Bird Game](https://r3nanp-flappybird.netlify.app/)
