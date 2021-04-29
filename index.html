@@ -2,24 +2,28 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="manifest" href="./public/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A version of flappy bird made in HTML with Canvas API" />
+    <link rel="manifest" href="./public/manifest.json" />
+    <link rel="shortcut icon" href="./public/icon.png" />
+
+    <meta name="description" content="Play the famous game for free." />
     <meta property="og:image" content="./public/images/logo@512x.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:site_name" content="Flappy Bird" />
     <meta property="og:title" content="Flappy Bird" />
-    <meta property="og:description" content="A version of flappy bird made in HTML with Canvas API" />
+    <meta property="og:description" content="Play the famous game for free." />
     <meta property="og:image:width" content="512" />
     <meta property="og:image:height" content="512" />
     <meta name="author" content="r3nanp" />
     <meta name="theme-color" content="#FFFF00" />
-    <meta name="keywords" content="r3nanp, Renan Pereira, flappy-bird" />
-    <script data-ad-client="ca-pub-5125791754395683" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <meta name="keywords" content="game, flappy, bird, flappy-bird" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Flappy Bird" />
-    <meta name="twitter:description" content="A version of flappy bird made in HTML with Canvas API" />
+    <meta
+      name="twitter:description"
+      content="A version of flappy bird made in HTML with Canvas API"
+    />
     <meta name="twitter:image" content="./public/images/logo@512x.png" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -38,22 +42,21 @@
       href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
       rel="stylesheet"
     />
-    <link rel="icon" href="./public/flappyicon.png" />
 
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register('./public/serviceworker.js')
-          .then(() => {
-            console.log('service worker registered')
-          })
-          .catch(() => {
-            console.warn('service worker failed')
-          })
+        navigator.serviceWorker.register('./public/serviceworker.js')
       }
     </script>
     <title>Flappy Bird</title>
+
     <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
       body {
         min-height: 100vh;
         display: flex;
@@ -72,7 +75,7 @@
       }
 
       p {
-        font: 700 1rem Arial, sans-serif;
+        font: 700 1.5rem VT323, sans-serif;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -92,9 +95,6 @@
         box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
         -webkit-tap-highlight-color: transparent;
-        margin-bottom: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
         display: inline-block;
         vertical-align: top;
       }
