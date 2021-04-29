@@ -1,6 +1,6 @@
 {
   "name": "Flappy Bird",
-  "description": "Flappy Bird",
+  "description": "Play the famous game for free.",
   "short_name": "Flappy Bird",
   "start_url": "index.html",
   "theme_color": "#FFFF00",
@@ -10,35 +10,30 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "images/logo@96x.png",
-      "sizes": "96x96",
+      "src": "images/icon72.png",
+      "sizes": "72x72",
       "type": "image/png",
-      "purpose": "maskable"
+      "purpose": "any maskable"
     },
     {
-      "src": "images/logo@192x.png",
+      "src": "images/icon96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon@144x.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon@192x.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "images/logo@512x.png",
+      "src": "images/icon@512x.png",
       "sizes": "512x512",
-      "type": "image/png"
-    },
-    {
-      "src": "images/logo@144x.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "images/logo@72x.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "images/logo@48x.png",
-      "sizes": "48x48",
       "type": "image/png"
     }
   ]
