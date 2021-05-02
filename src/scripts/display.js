@@ -60,11 +60,17 @@ export default function (main) {
         main.gameOver.draw()
       },
       click() {
-        main.changeDisplay(main.display.key)
-        alert(`You've earned ${score} points`)
-        localStorage.setItem('bestPoints', main.points)
+        Swal.fire({
+          title: 'Game over!',
+          text: `You've earned ${score} points`,
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+        localStorage.setItem('@FlappyBird:bestScore', score)
 
         global.score.over()
+
+        main.changeDisplay(main.display.key)
       },
       update() {
         main.gameOver.draw()
