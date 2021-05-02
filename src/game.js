@@ -1,6 +1,8 @@
 import main from './scripts/index.js'
 
-window.addEventListener('mousedown', () => {
+const canvas = document.querySelector('canvas')
+
+canvas.addEventListener('mousedown', () => {
   if (main.displayActive.click || main.displayActive.over) {
     main.displayActive.click()
   }
