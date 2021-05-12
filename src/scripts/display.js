@@ -1,4 +1,4 @@
-import { score } from './createScore.js'
+import { score, getStoragedScore } from './createScore.js'
 export const global = {}
 
 export default function (main) {
@@ -30,6 +30,8 @@ export default function (main) {
     game: {
       started() {
         global.score = main.createScore()
+        global.getStoragedScore = main.getStoragedScore()
+        global.getScore = main.getScore()
       },
       draw() {
         main.background.draw()
@@ -58,6 +60,8 @@ export default function (main) {
 
         global.floor.draw()
         main.gameOver.draw()
+        global.getStoragedScore.draw()
+        global.getScore.draw()
       },
       click() {
         Swal.fire({
@@ -66,7 +70,10 @@ export default function (main) {
           icon: 'error',
           confirmButtonText: 'Cool'
         })
-        localStorage.setItem('@FlappyBird:bestScore', score)
+
+        if(score > Number(getStoragedScore)) {
+          localStorage.setItem('@FlappyBird:bestScore', score)
+        }
 
         global.score.over()
 
@@ -74,6 +81,8 @@ export default function (main) {
       },
       update() {
         main.gameOver.draw()
+        global.getStoragedScore.draw()
+        global.getScore.draw()
       },
     },
   }
