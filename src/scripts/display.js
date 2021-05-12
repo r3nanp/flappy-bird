@@ -3,7 +3,7 @@ export const global = {}
 
 export default function (main) {
    main.display = {
-    key: {
+    start: {
       started() {
         global.flappyBird = main.makeFlappyBird()
         global.floor = main.createFloor()
@@ -19,7 +19,7 @@ export default function (main) {
       },
 
       click() {
-        main.changeDisplay(main.display.game)
+        main.changeScreen(main.display.game)
       },
 
       update() {
@@ -64,20 +64,20 @@ export default function (main) {
         global.getScore.draw()
       },
       click() {
-        Swal.fire({
-          title: 'Game over!',
-          text: `You've earned ${score} points`,
-          icon: 'error',
-          confirmButtonText: 'Cool'
-        })
-
         if(score > Number(getStoragedScore)) {
           localStorage.setItem('@FlappyBird:bestScore', score)
         }
 
+        Swal.fire({
+          title: 'Game over!',
+          text: `You've earned ${score} points`,
+          icon: 'error',
+          confirmButtonText: 'Okay'
+        })
+
         global.score.over()
 
-        main.changeDisplay(main.display.key)
+        main.changeScreen(main.display.start)
       },
       update() {
         main.gameOver.draw()

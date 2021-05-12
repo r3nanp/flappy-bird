@@ -21,7 +21,7 @@ export default function (main) {
       update() {
         if (makeFloorCollision(flappyBird, main.floor)) {
           main.hitAudio.play()
-          main.changeDisplay(main.display.over)
+          main.changeScreen(main.display.over)
         }
 
         flappyBird.speed += flappyBird.gravity

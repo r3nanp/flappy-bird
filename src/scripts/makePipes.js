@@ -80,7 +80,7 @@ export default function (main) {
 
           if (flappyBirdCollision(list)) {
             main.hitAudio.play()
-            main.changeDisplay(main.display.over)
+            main.changeScreen(main.display.over)
           }
 
           if (list.x + pipes.width <= 0) {
