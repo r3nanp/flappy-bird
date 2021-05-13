@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="./public/manifest.json" />
     <link rel="shortcut icon" href="./public/icon.png" />
+    <link rel="stylesheet" href="./src/styles.css">
 
     <meta name="description" content="Play the famous game for free." />
     <meta property="og:image" content="./public/images/logo@512x.png" />
@@ -38,10 +39,6 @@
       sizes="512x512"
       href="./public/images/logo@512x.png"
     />
-    <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
-      rel="stylesheet"
-    />
 
     <script>
       if ('serviceWorker' in navigator) {
@@ -49,58 +46,8 @@
       }
     </script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Flappy Bird</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow-y: hidden;
-
-        background: #fafafa;
-        font: 700 1.5rem VT323, sans-serif;
-      }
-
-      header {
-        position: fixed;
-        top: 0;
-        margin-bottom: 20px;
-      }
-
-      p {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      canvas {
-        border: 1px solid black;
-        cursor: pointer;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
-        image-rendering: -moz-crisp-edges;
-        -webkit-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
-        -moz-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
-        box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-tap-highlight-color: transparent;
-        display: inline-block;
-        vertical-align: top;
-      }
-    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
