@@ -4,6 +4,7 @@ import addEffects from './effects.js'
 import createMenus from './menus.js'
 import createBackground from './background.js'
 import createScore from './createScore.js'
+import addMedal from './addMedal.js'
 
 import createScreen from './createScreen.js'
 import createFloor from './floor.js'
@@ -20,10 +21,11 @@ createBackground(main)
 createFloor(main)
 createDisplay(main)
 
+createScore(main)
+addMedal(main)
 makePipes(main)
 makeFlappyBird(main)
 createScreen(main)
 createMenus(main)
-createScore(main)
 
 export default main
