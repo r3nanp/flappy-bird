@@ -1,4 +1,4 @@
-import { score, storagedScore } from './createScore.js'
+import { score } from './createScore.js'
 export const global = {}
 
 export default function (main) {
@@ -57,11 +57,12 @@ export default function (main) {
     over: {
       draw() {
         main.background.draw()
-
         global.floor.draw()
         main.gameOver.draw()
+
         global.storagedScore.draw()
         global.getScore.draw()
+        main.addMedal.draw()
       },
       click() {
         Swal.fire({
@@ -78,7 +79,8 @@ export default function (main) {
         main.changeScreen(main.display.start)
       },
       update() {
-        main.gameOver.draw()
+        main.gameOver.update()
+        main.addMedal.draw()
         global.storagedScore.draw()
         global.getScore.draw()
       },
