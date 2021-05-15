@@ -1,6 +1,6 @@
 export let score = 0
 
-export const storagedScore = localStorage.getItem('@FlappyBird:bestScore')
+export let storagedScore = localStorage.getItem('@FlappyBird:bestScore')
 
 export default function (main) {
   main.createScore = () => {
@@ -27,7 +27,7 @@ export default function (main) {
   }
 
   main.getScore = () => {
-    const scoreboard = {
+    const getScore = {
       draw() {
         main.context.font = '30px "VT323"'
         main.context.textAlign = 'center'
@@ -35,11 +35,11 @@ export default function (main) {
         main.context.fillText(`${score}`, main.canvas.width - 80, 145)
       },
     }
-    return scoreboard
+    return getScore
   }
 
   main.storagedScore = () => {
-    const getScoreboard = {
+    const getStoragedScore = {
       draw() {
         main.context.font = '30px "VT323"'
         main.context.textAlign = 'center'
@@ -52,6 +52,6 @@ export default function (main) {
         }
       },
     }
-    return getScoreboard
+    return getStoragedScore
   }
 }
