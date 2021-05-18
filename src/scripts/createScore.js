@@ -1,5 +1,4 @@
 export let score = 0
-
 export let storagedScore = localStorage.getItem('@FlappyBird:bestScore')
 
 export default function (main) {
@@ -44,7 +43,11 @@ export default function (main) {
         main.context.font = '30px "VT323"'
         main.context.textAlign = 'center'
         main.context.fillStyle = 'white'
-        main.context.fillText(`${storagedScore}`, main.canvas.width - 80, 185)
+        main.context.fillText(
+          `${score >= Number(storagedScore) ? score : Number(storagedScore)}`,
+          main.canvas.width - 80,
+          185
+        )
       },
       save() {
         if (score > Number(storagedScore)) {
