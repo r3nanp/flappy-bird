@@ -1,7 +1,6 @@
 export default function (main) {
   main.sprites = new Image()
-  main.sprites.src = '../src/images/sprites.png'
+  main.sprites.src = '../src/assets/sprites.png'
 
-  main.hitAudio = new Audio()
-  main.hitAudio.src = '../src/effects/hitsound.mp3'
+  main.hitAudio = new Audio('../src/assets/hitsound.mp3')
 }

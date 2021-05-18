@@ -20,9 +20,9 @@ export default function (main) {
       main.context.drawImage(
         main.sprites,
         main.background.spriteX,
-        main.background.spriteY, // x and y
+        main.background.spriteY,
         main.background.width,
-        main.background.height, // cut on sprite
+        main.background.height,
         main.background.canvasX,
         main.background.canvasY,
         main.background.width,
