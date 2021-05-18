@@ -4,10 +4,7 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(async cache => {
       await cache.addAll([
-        '../index.html',
-        'manifest.json',
-        '../src/effects/hitsound.mp3',
-        '../src/game.js',
+        '../index.html'
       ])
       return self.skipWaiting()
     })

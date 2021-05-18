@@ -8,7 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
   main.renderScreen()
 })
 
-
 canvas.addEventListener('mousedown', () => {
   if (main.screenActive.click || main.screenActive.over) {
     main.screenActive.click()
