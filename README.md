@@ -1,3 +1,10 @@
+<p align="center">
+  <a href="https://r3nanp-flappybird.netlify.app/">
+    <img src="./.github/flappy-bird.gif">
+  </a>
+</p>
+
+
 # 🐦 Flappy-Bird
 
 > An clone of a famous game written in Javascript and Canvas.
@@ -32,10 +39,6 @@ $ git clone https://github.com/r3nanp/flappy-bird.git
 
 Open the index.html file in your browser.
 ```
-
-# 📸 Screenshot
-
-<img src="./.github/screenshot.png" />
 
 # 🔗 Link
 
