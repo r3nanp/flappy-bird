@@ -46,7 +46,7 @@
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('./public/serviceworker.js')
+          .register('serviceworker.js')
           .then(() => {
             console.log('service worker registered')
           })
