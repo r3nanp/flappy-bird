@@ -8,6 +8,7 @@
   "scope": "./index.html",
   "display": "standalone",
   "orientation": "portrait-primary",
+  "categories": ["game", "webapp", "flappy-bird", "web game"],
   "icons": [
     {
       "src": "images/icon72.png",
@@ -36,5 +37,13 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "shortcuts": {
+    "name": "Flappy Bird",
+    "short_name": "Flappy Bird",
+    "url": "./index.html",
+    "icons": [
+      { "src": "images/icon@192x.png", "sizes": "192x192", "type": "image/png" }
+    ]
+  }
 }
