@@ -7,7 +7,7 @@
 
 # 🐦 Flappy-Bird
 
-> An clone of a famous game written in Javascript and Canvas.
+> An clone of a famous game written in Javascript and HTML Canvas API.
 
 ---
 
