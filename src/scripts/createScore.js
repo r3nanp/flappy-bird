@@ -1,8 +1,12 @@
+import { global } from './display.js'
+
 export let score = 0
 export let storagedScore = localStorage.getItem('@FlappyBird:bestScore')
 
 export default function (main) {
   main.createScore = () => {
+    let flappyBird = global.flappyBird.spriteX
+    let pipeX
     const scoreboard = {
       draw() {
         main.context.font = '35px "VT323"'
@@ -11,10 +15,22 @@ export default function (main) {
         main.context.fillText(`${score}`, main.canvas.width - 10, 35)
       },
       update() {
-        const framesInterval = 20
-        const passOnInterval = main.frames % framesInterval === 0
+        // Will update the score only when you pass it to the pipe
 
-        if (passOnInterval) {
+        switch (global.pipes.pipeList.length) {
+          case 0:
+            return
+          case 1:
+            pipeX = global.pipes.pipeList[0].x
+            break
+          case 2:
+            pipeX = Math.min(
+              global.pipes.pipeList[0].x,
+              global.pipes.pipeList[1].x
+            )
+        }
+
+        if (flappyBird === pipeX) {
           score += 1
         }
       },
