@@ -1,5 +1,5 @@
 import { score } from './createScore.js'
-export const global = {}
+export let global = {}
 
 export default function (main) {
    main.display = {
