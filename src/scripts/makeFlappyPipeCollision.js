@@ -1,5 +1,11 @@
 import { global } from './display.js'
 
+/**
+ * Function who create the collision between the pipe and the flappy bird.
+ * @param {array} list
+ * @returns boolean
+ */
+
 export default function flappyBirdCollision(list) {
   const flappyBird = global.flappyBird
 
