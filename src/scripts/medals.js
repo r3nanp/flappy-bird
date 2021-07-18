@@ -1,6 +1,5 @@
-
-const data = {
-  widths: {
+const medalPositions = {
+  spriteWidth: {
     spriteX: {
       initialX: 1,
       finalX: 48,
@@ -16,10 +15,10 @@ const data = {
   canvasY: 136,
 }
 
-const { widths, width, height, canvasX, canvasY } = data
+const { spriteWidth, width, height, canvasX, canvasY } = medalPositions
 
-const { finalX, initialX } = widths.spriteX
-const { finalY, initialY } = widths.spriteY
+const { finalX, initialX } = spriteWidth.spriteX
+const { finalY, initialY } = spriteWidth.spriteY
 
 const whiteMedal = {
   initialX,
@@ -48,7 +47,7 @@ const goldMedal = {
   canvasY,
 }
 
-const goldenMedal = {
+const bronzeMedal = {
   finalX,
   finalY,
   width,
@@ -71,6 +70,21 @@ export const drawMedals = {
       whiteMedal.height
     )
   },
+
+  drawBronzeMedal(main) {
+    main.context.drawImage(
+      main.sprites,
+      bronzeMedal.finalX,
+      bronzeMedal.finalY,
+      bronzeMedal.width,
+      bronzeMedal.height,
+      bronzeMedal.canvasX,
+      bronzeMedal.canvasY,
+      bronzeMedal.width,
+      bronzeMedal.height
+    )
+  },
+
   drawSilverMedal(main) {
     main.context.drawImage(
       main.sprites,
@@ -84,6 +98,7 @@ export const drawMedals = {
       silverMedal.height
     )
   },
+
   drawGoldMedal(main) {
     main.context.drawImage(
       main.sprites,
@@ -95,19 +110,6 @@ export const drawMedals = {
       goldMedal.canvasY,
       goldMedal.width,
       goldMedal.height
-    )
-  },
-  drawGoldenMedal(main) {
-    main.context.drawImage(
-      main.sprites,
-      goldenMedal.finalX,
-      goldenMedal.finalY,
-      goldenMedal.width,
-      goldenMedal.height,
-      goldenMedal.canvasX,
-      goldenMedal.canvasY,
-      goldenMedal.width,
-      goldenMedal.height
     )
   },
 }

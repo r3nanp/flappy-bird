@@ -1,6 +1,12 @@
 import { global } from './display.js'
 
-export default function makeCollision(flappyBird, _floor) {
+/**
+ * Function that creates a collision object for the floor.
+ * @param {object} flappyBird - The flappy bird game object.
+ * @returns boolean
+ */
+
+export default function makeCollision(flappyBird) {
   const flappyBirdY = flappyBird.canvasY + flappyBird.height
   const floorY = global.floor.canvasY
 
