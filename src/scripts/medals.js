@@ -97,7 +97,7 @@ export const drawMedals = {
       goldMedal.height
     )
   },
-  drawGoldenMedal(main) {
+  drawBronzeMedal(main) {
     main.context.drawImage(
       main.sprites,
       goldenMedal.finalX,
