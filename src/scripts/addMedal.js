@@ -1,21 +1,35 @@
 import { score } from './createScore.js'
 import { drawMedals } from './medals.js'
 
+/**
+ * Return a function that draws a medal to a user's score.
+ * @param {object} main
+ */
+
 export default function (main) {
-  const { drawWhiteMedal, drawSilverMedal, drawGoldMedal, drawGoldenMedal } =
-    drawMedals
+  const { drawSilverMedal, drawGoldMedal, drawBronzeMedal } = drawMedals
 
   main.addMedal = {
     draw() {
-      if (score <= 10) {
-        drawWhiteMedal(main)
-      } else if (score <= 20) {
-        drawSilverMedal(main)
-      } else if (score <= 30) {
-        drawGoldMedal(main)
-      } else if (score > 30) {
-        drawGoldenMedal(main)
+      const medal = score >= 30 ? 'gold' : score >= 20 ? 'silver' : 'bronze'
+
+      /**
+       * Get a medal based on a score.
+       * @param {String} medal - Medals to draw
+       * @param {object} main - Main object
+       */
+
+      const getMedal = (medal, main) => {
+        const medals = {
+          bronze: drawBronzeMedal(main),
+          silver: drawSilverMedal(main),
+          gold: drawGoldMedal(main),
+        }
+
+        return medals[medal]
       }
+
+      getMedal(medal, main)
     },
     update() {
       this.draw()
