@@ -32,8 +32,6 @@ export default function (main) {
             return drawWhiteMedal(main)
         }
       }
-
-      getMedal(medal, main)
     },
     update() {
       this.draw()
