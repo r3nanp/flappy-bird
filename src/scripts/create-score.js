@@ -1,7 +1,12 @@
-import { global } from './display.js'
+import { global } from './create-display.js'
 
 export let score = 0
 export let storagedScore = localStorage.getItem('@FlappyBird:bestScore')
+
+/**
+ * Function that create a new score, get a new score and save it in localStorage.
+ * @param {object} main - Main object
+ */
 
 export default function (main) {
   main.createScore = () => {
@@ -15,7 +20,7 @@ export default function (main) {
         main.context.fillText(`${score}`, main.canvas.width - 10, 35)
       },
       update() {
-        // Will update the score only when you pass it to the pipe
+        // It will update the score only when the flappy bird passes it to the pipe
 
         switch (global.pipes.pipeList.length) {
           case 0:

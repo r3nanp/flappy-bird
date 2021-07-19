@@ -1,5 +1,10 @@
-import { score } from './createScore.js'
+import { score } from './create-score.js'
 export let global = {}
+
+/**
+ * When the game start, it will create a display object.
+ * @param {object} main - Main object
+ */
 
 export default function (main) {
    main.display = {

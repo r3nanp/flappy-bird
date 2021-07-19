@@ -1,16 +1,16 @@
-import createCanvas from './canvas.js'
-import createRender from './createRender.js'
-import addEffects from './effects.js'
-import createMenus from './menus.js'
-import createBackground from './background.js'
-import createScore from './createScore.js'
-import addMedal from './addMedal.js'
+import createCanvas from './create-canvas.js'
+import createRender from './create-render.js'
+import addEffects from './add-effects.js'
+import createMenus from './create-menus.js'
+import createBackground from './create-background.js'
+import createScore from './create-score.js'
+import addMedal from './add-medal.js'
 
-import createScreen from './createScreen.js'
-import createFloor from './floor.js'
-import makeFlappyBird from './makeFlappyBird.js'
-import makePipes from './makePipes.js'
-import createDisplay from './display.js'
+import createScreen from './create-screen.js'
+import createFloor from './create-floor.js'
+import makeFlappyBird from './create-flappybird.js'
+import makePipes from './create-pipes.js'
+import createDisplay from './create-display.js'
 
 const main = {}
 

@@ -1,3 +1,8 @@
+/**
+ * Create render
+ * @param {object} main - Main object
+ */
+
 export default function (main) {
   main.frames = 0
 
