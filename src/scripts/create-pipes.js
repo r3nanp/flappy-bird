@@ -1,5 +1,10 @@
 import flappyBirdCollision from './makeFlappyPipeCollision.js'
 
+/**
+ * Function to, randomly, create pipes.
+ * @param {object} main - Main object
+ */
+
 export default function (main) {
   main.makePipes = () => {
     const pipes = {
@@ -17,14 +22,14 @@ export default function (main) {
       pipeList: [],
 
       draw() {
-        pipes.pipeList.forEach(list => {
-          const pipeRandomY = list.y
+        pipes.pipeList.forEach(pipe => {
+          const pipeRandomY = pipe.y
           const spacePipes = 92
 
-          const pipeSkyX = list.x
+          const pipeSkyX = pipe.x
           const pipeSkyY = pipeRandomY
 
-          list.pipeSky = {
+          pipe.pipeSky = {
             x: pipeSkyX,
             y: pipes.height + pipeSkyY,
           }
@@ -43,10 +48,10 @@ export default function (main) {
           )
 
           // Floor pipe
-          const pipeFloorX = list.x
+          const pipeFloorX = pipe.x
           const pipeFloorY = pipes.height + spacePipes + pipeRandomY
 
-          list.pipeFloor = {
+          pipe.pipeFloor = {
             x: pipeFloorX,
             y: pipeFloorY,
           }
@@ -70,20 +75,22 @@ export default function (main) {
 
         if (passedFrames) {
           pipes.pipeList.push({
-            x: main.canvas.width,
-            y: -150 * (Math.random() + 1),
+            x: main.canvas.width, // Start to draw in the right side of the screen
+            y: -150 * (Math.random() + 1), // Random pipe axis Y position
           })
         }
 
-        pipes.pipeList.forEach(list => {
-          list.x = list.x - 2
+        pipes.pipeList.forEach(pipe => {
+          /* Every time, that updated the pipes, it will move 2px to the left */
+          pipe.x -= 2
 
-          if (flappyBirdCollision(list)) {
+          if (flappyBirdCollision(pipe)) {
             main.hitAudio.play()
             main.changeScreen(main.display.over)
           }
 
-          if (list.x + pipes.width <= 0) {
+          // Remove pipes that are out of the screen
+          if (pipe.x + pipes.width <= 0) {
             pipes.pipeList.shift()
           }
         })

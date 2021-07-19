@@ -1,4 +1,4 @@
-import { global } from './display.js'
+import { global } from './create-display.js'
 
 /**
  * Function that creates a collision object for the floor.

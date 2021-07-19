@@ -1,5 +1,5 @@
-import { score } from './createScore.js'
-import { drawMedals } from './medals.js'
+import { score } from './create-score.js'
+import { drawMedals } from './draw-medals.js'
 
 /**
  * Return a function that draws a medal to a user's score.

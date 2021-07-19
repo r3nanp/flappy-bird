@@ -9,22 +9,24 @@ export default function (main) {
       height: 24,
       canvasX: 10,
       canvasY: 50,
+
+      // Flappy bird physics
       jumping: 4.6,
-
-      jump() {
-        flappyBird.speed = -flappyBird.jumping
-      },
-
       gravity: 0.25,
       speed: 0,
 
+      jump() {
+        // Jump! It will decrease speed when jumping.
+        flappyBird.speed = -flappyBird.jumping
+      },
+
       update() {
-        if (makeFloorCollision(flappyBird, main.floor)) {
+        if (makeFloorCollision(flappyBird)) {
           main.hitAudio.play()
           main.changeScreen(main.display.over)
         }
 
-        flappyBird.speed += flappyBird.gravity
+        flappyBird.speed += flappyBird.gravity // It will increase speed by gravity
 
         flappyBird.canvasY += flappyBird.speed
       },
@@ -53,9 +55,8 @@ export default function (main) {
 
       draw() {
         flappyBird.updateFrames()
-        const { spriteX, spriteY } = flappyBird.movements[
-          flappyBird.actualFrame
-        ]
+        const { spriteX, spriteY } =
+          flappyBird.movements[flappyBird.actualFrame]
 
         main.context.drawImage(
           main.sprites,

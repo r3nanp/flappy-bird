@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
+    <title>Flappy Bird</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="./public/manifest.json" />
@@ -42,7 +43,7 @@
       sizes="512x512"
       href="./public/images/logo@512x.png"
     />
-
+    <!-- Scripts -->
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
@@ -53,16 +54,18 @@
           .catch(() => {
             console.warn('service worker failed')
           })
-      } else {
-        document.querySelector('p').innerHTML = 'Algo deu errado :('
       }
     </script>
 
     <script
-      defer
+      crossorigin="anonymous"
       src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.7/dist/sweetalert2.all.min.js"
     ></script>
-    <title>Flappy Bird</title>
+
+    <script
+      crossorigin="anonymous"
+      src="https://polyfill.io/v3/polyfill.min.js"
+    ></script>
 
     <style>
       * {
@@ -90,11 +93,6 @@
       }
 
       p {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
         user-select: none;
       }
 
