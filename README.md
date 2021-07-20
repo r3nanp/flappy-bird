@@ -4,7 +4,6 @@
   </a>
 </p>
 
-
 # 🐦 Flappy-Bird
 
 > An clone of a famous game written in Javascript and HTML Canvas API.
@@ -19,25 +18,37 @@
 
 [Check this step by step](CONTRIBUTING.md)
 
-
 # 🛠 Technologies Used
 
 - HTML
 - Canvas API
+- Vite
 - Javascript
 
 # 👷‍♂️ How to run
 
-```
-# Clone repository
+Clone repository
 
-$ git clone https://github.com/r3nanp/flappy-bird.git
+```bash
+git clone https://github.com/r3nanp/flappy-bird.git
 ```
 
-```
-# Run in your browser:
+Then, install the dependencies:
 
-Open the index.html file in your browser.
+```bash
+  yarn
+```
+
+or
+
+```bash
+npm install
+```
+
+Run in your browser:
+
+```bash
+yarn dev
 ```
 
 # 🔗 Link
