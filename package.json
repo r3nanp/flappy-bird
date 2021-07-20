@@ -1,0 +1,30 @@
+{
+  "name": "flappy-bird",
+  "description": "A clone of a famous game, the Flappy Bird, made in Javascript and HTML Canvas API.",
+  "version": "1.0.0",
+  "main": "index.html",
+  "author": "Renan Pereira <renanmol87@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://r3nanp-flappybird.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r3nanp/flappy-bird.git"
+  },
+  "bugs": {
+    "url": "https://github.com/r3nanp/flappy-bird/issues"
+  },
+  "keywords": [
+    "r3nanp",
+    "flappy-bird",
+    "game",
+    "canvas-game"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "serve": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.4.3"
+  }
+}
