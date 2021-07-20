@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="manifest" href="./public/manifest.json" />
     <link rel="shortcut icon" href="./public/icon.png" />
+    <link rel="stylesheet" href="css/global.css">
 
     <meta name="description" content="Play the famous game for free." />
     <meta property="og:image" content="./public/images/logo@512x.png" />
@@ -66,59 +67,16 @@
       crossorigin="anonymous"
       src="https://polyfill.io/v3/polyfill.min.js"
     ></script>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        overflow-y: hidden;
-
-        background: #fafafa;
-        font: 700 1.5rem VT323, sans-serif;
-      }
-
-      header {
-        position: fixed;
-        top: 0;
-        margin-bottom: 20px;
-      }
-
-      p {
-        user-select: none;
-      }
-
-      canvas {
-        border: 1px solid black;
-        cursor: pointer;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
-        image-rendering: -moz-crisp-edges;
-        -webkit-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
-        -moz-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
-        box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        -webkit-tap-highlight-color: transparent;
-        display: inline-block;
-        vertical-align: top;
-      }
-    </style>
   </head>
   <body>
+    <div id="root"></div>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <header>
       <p>Made by Renan with 💓</p>
     </header>
 
     <canvas width="320" height="480"></canvas>
-    <script defer src="../src/game.js" type="module"></script>
+    <script src="src/game.js" type="module"></script>
   </body>
 </html>

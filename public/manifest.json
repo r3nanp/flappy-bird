@@ -2,10 +2,10 @@
   "name": "Flappy Bird",
   "description": "Play the famous game for free.",
   "short_name": "Flappy Bird",
-  "start_url": "./index.html",
+  "start_url": "/",
   "theme_color": "#FFFF00",
   "background_color": "#fafafa",
-  "scope": "./index.html",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "categories": ["game", "webapp", "flappy-bird", "web game"],
@@ -41,7 +41,7 @@
   "shortcuts": {
     "name": "Flappy Bird",
     "short_name": "Flappy Bird",
-    "url": "./index.html",
+    "url": "/",
     "icons": [
       { "src": "images/icon@192x.png", "sizes": "192x192", "type": "image/png" }
     ]

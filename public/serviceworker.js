@@ -3,9 +3,7 @@ const cacheName = 'Flappy Bird'
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(async cache => {
-      await cache.addAll([
-        './index.html'
-      ])
+      await cache.addAll(['/'])
       return self.skipWaiting()
     })
   )

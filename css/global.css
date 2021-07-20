@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: hidden;
+
+  background: #fafafa;
+  font: 700 1.5rem VT323, sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  margin-bottom: 20px;
+}
+
+p {
+  user-select: none;
+}
+
+canvas {
+  border: 1px solid black;
+  cursor: pointer;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  -webkit-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  vertical-align: top;
+}
