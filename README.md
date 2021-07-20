@@ -24,6 +24,7 @@
 
 - HTML
 - Canvas API
+- Vite
 - Javascript
 
 # 👷‍♂️ How to run
