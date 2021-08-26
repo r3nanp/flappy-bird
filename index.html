@@ -4,12 +4,11 @@
     <title>Flappy Bird</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="./public/manifest.json" />
-    <link rel="shortcut icon" href="./public/icon.png" />
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="shortcut icon" href="/icon.png" />
 
     <meta name="description" content="Play the famous game for free." />
-    <meta property="og:image" content="./public/images/logo@512x.png" />
+    <meta property="og:image" content="images/logo@512x.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:site_name" content="Flappy Bird" />
     <meta property="og:title" content="Flappy Bird" />
@@ -26,7 +25,7 @@
       name="twitter:description"
       content="A version of flappy bird made in HTML with Canvas API"
     />
-    <meta name="twitter:image" content="./public/images/logo@512x.png" />
+    <meta name="twitter:image" content="/images/logo@512x.png" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="dns-prefetch" href="https:/fonts.gstatic.com" />
@@ -37,18 +36,18 @@
     <link
       rel="apple-touch-icon"
       sizes="192x192"
-      href="./public/images/logo@192x.png"
+      href="/images/logo@192x.png"
     />
     <link
       rel="apple-touch-icon"
       sizes="512x512"
-      href="./public/images/logo@512x.png"
+      href="/images/logo@512x.png"
     />
     <!-- Scripts -->
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('./public/serviceworker.js')
+          .register('/serviceworker.js')
           .then(() => {
             console.log('service worker registered')
           })
@@ -69,14 +68,12 @@
     ></script>
   </head>
   <body>
-    <div id="root"></div>
-
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <header>
       <p>Made by Renan with 💓</p>
     </header>
 
     <canvas width="320" height="480"></canvas>
-    <script src="src/game.js" type="module"></script>
+    <script src="/src/game.js" type="module"></script>
   </body>
 </html>
