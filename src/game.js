@@ -1,3 +1,4 @@
+import './css/global.css'
 import main from './scripts/index.js'
 
 const canvas = document.querySelector('canvas')

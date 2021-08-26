@@ -5,7 +5,7 @@
   "main": "index.html",
   "author": "Renan Pereira <renanmol87@gmail.com>",
   "license": "MIT",
-  "homepage": "https://r3nanp-flappybird.netlify.app",
+  "homepage": "https://r3nanp-flappybird.vercel.app",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/r3nanp/flappy-bird.git"
@@ -14,7 +14,6 @@
     "url": "https://github.com/r3nanp/flappy-bird/issues"
   },
   "keywords": [
-    "r3nanp",
     "flappy-bird",
     "game",
     "canvas-game"
@@ -25,6 +24,7 @@
     "serve": "vite preview"
   },
   "devDependencies": {
+    "prettier": "^2.3.2",
     "vite": "^2.4.3"
   }
 }
