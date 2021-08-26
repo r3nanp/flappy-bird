@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://r3nanp-flappybird.netlify.app/">
+  <a href="https://flappy-bird-rust.vercel.app">
     <img src="./.github/flappy-bird.gif">
   </a>
 </p>
@@ -36,7 +36,7 @@ git clone https://github.com/r3nanp/flappy-bird.git
 Then, install the dependencies:
 
 ```bash
-  yarn
+yarn
 ```
 
 or
@@ -53,4 +53,4 @@ yarn dev
 
 # 🔗 Link
 
-[Flappy Bird Game](https://r3nanp-flappybird.netlify.app/)
+[Flappy Bird Game](https://flappy-bird-rust.vercel.app)
