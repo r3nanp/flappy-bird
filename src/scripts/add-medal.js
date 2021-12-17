@@ -5,7 +5,6 @@ import { drawMedals } from './draw-medals.js'
  * Return a function that draws a medal to a user's score.
  * @param {object} main - Main object
  */
-
 export default function (main) {
   const { drawSilverMedal, drawGoldMedal, drawBronzeMedal, drawWhiteMedal } =
     drawMedals
@@ -19,18 +18,15 @@ export default function (main) {
        * @param {String} medal - Medals to draw
        * @param {object} main - Main object
       */
-
       const getMedal = (medal, main) => {
-        switch (medal) {
-          case 'silver':
-            return drawSilverMedal(main)
-          case 'gold':
-            return drawGoldMedal(main)
-          case 'bronze':
-            return drawBronzeMedal(main)
-          default:
-            return drawWhiteMedal(main)
+        const medals = {
+          'gold': drawGoldMedal(main),
+          'silver': drawSilverMedal(main),
+          'bronze': drawBronzeMedal(main),
+          'white': drawWhiteMedal(main)
         }
+
+        return medals[medal] ?? medals.white
       }
 
       getMedal(medal, main)

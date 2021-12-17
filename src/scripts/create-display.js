@@ -5,9 +5,8 @@ export let global = {}
  * When the game start, it will create a display object.
  * @param {object} main - Main object
  */
-
 export default function (main) {
-   main.display = {
+  main.display = {
     start: {
       started() {
         global.flappyBird = main.makeFlappyBird()
@@ -74,7 +73,7 @@ export default function (main) {
           title: 'Game over!',
           text: `You've earned ${score} points`,
           icon: 'error',
-          confirmButtonText: 'Okay'
+          confirmButtonText: 'Okay',
         })
 
         global.storagedScore.save()

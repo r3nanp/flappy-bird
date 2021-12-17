@@ -1,3 +1,5 @@
+import { factoryDraw } from '../utils/factory-draw.js'
+
 const medalPositions = {
   spriteWidth: {
     spriteX: {
@@ -58,58 +60,18 @@ const bronzeMedal = {
 
 export const drawMedals = {
   drawWhiteMedal(main) {
-    main.context.drawImage(
-      main.sprites,
-      whiteMedal.initialX,
-      whiteMedal.initialY,
-      whiteMedal.width,
-      whiteMedal.height,
-      whiteMedal.canvasX,
-      whiteMedal.canvasY,
-      whiteMedal.width,
-      whiteMedal.height
-    )
+    factoryDraw(main, whiteMedal)
   },
 
   drawBronzeMedal(main) {
-    main.context.drawImage(
-      main.sprites,
-      bronzeMedal.finalX,
-      bronzeMedal.finalY,
-      bronzeMedal.width,
-      bronzeMedal.height,
-      bronzeMedal.canvasX,
-      bronzeMedal.canvasY,
-      bronzeMedal.width,
-      bronzeMedal.height
-    )
+    factoryDraw(main, bronzeMedal)
   },
 
   drawSilverMedal(main) {
-    main.context.drawImage(
-      main.sprites,
-      silverMedal.finalX,
-      silverMedal.initialY,
-      silverMedal.width,
-      silverMedal.height,
-      silverMedal.canvasX,
-      silverMedal.canvasY,
-      silverMedal.width,
-      silverMedal.height
-    )
+    factoryDraw(main, silverMedal)
   },
 
   drawGoldMedal(main) {
-    main.context.drawImage(
-      main.sprites,
-      goldMedal.initialX,
-      goldMedal.finalY,
-      goldMedal.width,
-      goldMedal.height,
-      goldMedal.canvasX,
-      goldMedal.canvasY,
-      goldMedal.width,
-      goldMedal.height
-    )
+    factoryDraw(main, goldMedal)
   },
 }

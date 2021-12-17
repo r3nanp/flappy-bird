@@ -54,9 +54,10 @@ export default function (main) {
       },
 
       draw() {
-        flappyBird.updateFrames()
         const { spriteX, spriteY } =
           flappyBird.movements[flappyBird.actualFrame]
+
+        flappyBird.updateFrames()
 
         main.context.drawImage(
           main.sprites,
